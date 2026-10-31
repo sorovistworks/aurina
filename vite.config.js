@@ -7,6 +7,8 @@ export default defineConfig(({ mode }) => {
     console.warn('\n\x1b[33m[aurina] .env still has placeholder contact details (WhatsApp, email or city). Update them before uploading.\x1b[0m\n');
   }
   return {
+    // GitHub Pages serves this repo at /aurina/; change to '/' when moving to the real domain.
+    base: mode === 'production' ? '/aurina/' : '/',
     build: {
       target: 'es2020',
       // two static pages: the landing page and the Reiki, Personally details page
