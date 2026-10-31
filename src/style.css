@@ -374,6 +374,158 @@ html:not(.js) .healer__hint { display: none; }
   letter-spacing: -0.02em;
 }
 
+/* ---------- Worries ---------- */
+.worries { padding-bottom: var(--section); }
+.worries__list { margin-top: clamp(2.5rem, 5vw, 4.5rem); border-top: 1px solid var(--line); }
+.worry {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: 1rem clamp(2rem, 6vw, 5rem);
+  align-items: baseline;
+  padding-block: clamp(1.75rem, 3vw, 2.5rem);
+  border-bottom: 1px solid var(--line);
+}
+.worry__q {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--accent);
+  padding-bottom: 0.08em;
+}
+.worry__a { color: var(--muted); max-width: 46ch; }
+
+@media (max-width: 760px) {
+  .worry { grid-template-columns: 1fr; }
+}
+
+/* ---------- Your 21 days ---------- */
+.journey {
+  --day-col: 7rem;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-bottom: var(--section);
+}
+.journey__head { align-self: start; position: sticky; top: 7rem; }
+.journey__intro { margin-top: 1.25rem; max-width: 46ch; }
+.journey__track { position: relative; }
+/* the rail; its fill is scrubbed by scroll in main.js (full by default) */
+.journey__rail {
+  position: absolute;
+  left: var(--day-col);
+  top: 0.9rem;
+  bottom: 2.9rem;
+  width: 1px;
+  background: var(--line);
+}
+.journey__fill { position: absolute; inset: 0; background: var(--accent); transform-origin: 50% 0; }
+.journey__list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--day-col) minmax(0, 1fr);
+  padding-bottom: 2.5rem;
+}
+.journey__list li::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--day-col) - 4.5px);
+  top: 0.65rem;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1.5px solid var(--accent);
+}
+.journey__list li > div { padding-left: clamp(1.5rem, 4vw, 3rem); }
+.journey__day {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.journey__day span {
+  display: block;
+  font-size: clamp(2.4rem, 5vw, 3.75rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: var(--ink);
+  text-transform: none;
+}
+.journey__list h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); font-weight: 400; letter-spacing: -0.01em; margin-bottom: 0.4rem; }
+.journey__list li p:not(.journey__day) { color: var(--muted); max-width: 48ch; }
+
+@media (max-width: 860px) {
+  .journey { grid-template-columns: 1fr; }
+  .journey__head { position: static; }
+}
+@media (max-width: 600px) {
+  .journey { --day-col: 4.75rem; }
+}
+
+/* ---------- Pricing ---------- */
+.pricing { padding-bottom: var(--section); }
+.pricing__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  margin-top: clamp(2.5rem, 5vw, 4.5rem);
+}
+.plan {
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+  padding: clamp(1.75rem, 3vw, 2.75rem);
+  border: 1px solid var(--line);
+}
+.plan--main { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.plan__name { font-size: 1.35rem; font-weight: 400; letter-spacing: -0.01em; }
+.plan__amount { font-size: clamp(2.75rem, 5vw, 4rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1; }
+.plan__founding { color: rgb(246 240 232 / 0.85); max-width: 40ch; }
+.plan__founding strong { color: var(--accent-ink); font-weight: 600; }
+.plan__desc { color: var(--muted); }
+.plan__list {
+  display: grid;
+  gap: 0.6rem;
+  width: 100%;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+.plan--main .plan__list { border-top-color: rgb(246 240 232 / 0.22); }
+.plan__list li { position: relative; padding-left: 1.4rem; }
+.plan__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0.78em;
+  width: 0.6rem; height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+.plan--main .btn--solid { background: var(--accent-ink); color: var(--accent); }
+.plan--main .btn--solid:hover { background: #fffaf3; }
+.pricing__note { margin-top: 2rem; color: var(--muted); max-width: 62ch; }
+.promises {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem clamp(1.5rem, 4vw, 3rem);
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+.promises h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.5rem; }
+.promises p { color: var(--muted); }
+.pricing__small { margin-top: 1.75rem; font-size: 0.85rem; color: var(--muted); }
+
+@media (max-width: 860px) {
+  .pricing__grid,
+  .promises { grid-template-columns: 1fr; }
+}
+
+/* ---------- Learn tagline ---------- */
+.learn__tagline { font-style: italic; color: var(--accent); font-size: 1.15rem; margin-top: -0.75rem; }
+
 /* ---------- Healing ---------- */
 .healing {
   display: grid;
