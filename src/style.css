@@ -261,6 +261,7 @@ em { font-style: italic; }
   font-size: clamp(1.1rem, 1.5vw, 1.25rem);
   color: var(--muted);
 }
+.nw { white-space: nowrap; }
 .hero__ctas { margin-top: 2.5rem; display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .hero__media {
   position: relative;
@@ -311,6 +312,57 @@ em { font-style: italic; }
 .healer__art .pupil { fill: var(--ink); }
 .healer__art .halo { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-opacity: 0.45; }
 .healer__art .spark { fill: var(--accent); }
+
+/* Healing illustration: top view, hands hovering */
+.healer__art.heal .bed { fill: #e3d6ee; }
+.healer__art.heal .pillow { fill: #f7f1ea; stroke: var(--ink); stroke-width: 3; }
+.healer__art.heal .patient { fill: #c9916a; stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+.healer__art.heal .fair { fill: #ecc7a4; stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; }
+.healer__art.heal .bangle { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; }
+.healer__art.heal .hshadow { fill: var(--ink); opacity: 0.34; }
+.healer__art.heal .torso { fill: var(--accent); }
+.healer__art.heal .ink { stroke-width: 4; }
+
+/* Video-call illustration (Reiki, Personally) */
+/* The reused woman lives in a <symbol>, whose shadow tree can't see the .healer__art rules, so she carries her own. */
+.wm .ink { fill: var(--ink); stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+.wm .skin { fill: #ecc7a4; stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+.wm .cream { fill: var(--accent-ink); stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+.wm .line { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.wm .line.thin { stroke-width: 2.6; }
+.wm .line-light { fill: none; stroke: var(--bg-2); stroke-width: 2.4; stroke-linecap: round; }
+.wm .braid-seg { stroke: var(--bg-2); stroke-width: 2.4; }
+.wm .tie { fill: var(--accent); }
+.wm .bindi { fill: #a3324f; }
+.wm .stud { fill: var(--accent-ink); stroke: var(--ink); stroke-width: 1.5; }
+.wm .pupil { fill: var(--ink); }
+
+.call .ground { fill: var(--ink); opacity: 0.1; }
+.call .screen { fill: #e3d6ee; }
+/* certificate */
+.call .cert-shadow { fill: var(--ink); opacity: 0.12; }
+.call .cert { fill: #fbf6ee; stroke: var(--ink); stroke-width: 2.5; }
+.call .cert-inner { fill: none; stroke: var(--accent); stroke-width: 1.2; }
+.call text { font-family: var(--font); text-anchor: middle; }
+.call .cert-kicker { font-size: 9px; font-weight: 500; letter-spacing: 0.22em; fill: var(--muted); }
+.call .cert-title { font-size: 31px; font-weight: 300; letter-spacing: -0.02em; fill: var(--ink); }
+.call .cert-em { font-style: italic; fill: var(--accent); }
+.call .cert-sub { font-size: 9.5px; fill: var(--muted); }
+.call .cert-small { font-size: 8.5px; font-style: italic; fill: var(--muted); }
+.call .cert-name { font-size: 18px; font-style: italic; font-weight: 300; fill: var(--ink); }
+.call .cert-line { fill: none; stroke: var(--ink); stroke-width: 0.6; opacity: 0.6; }
+.call .cert-sign { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.call .seal { fill: var(--accent); }
+.call .seal-tail { fill: var(--accent); }
+.call .seal-ring { fill: none; stroke: var(--accent-ink); stroke-width: 1; }
+.call .seal-text { font-size: 10px; font-weight: 500; fill: var(--accent-ink); }
+.call .notch { fill: var(--bg-2); }
+.call .bars { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; opacity: 0.55; }
+.call .label { fill: var(--accent-ink); font: 500 10px var(--font); text-anchor: middle; }
+.call .label--dark { fill: var(--ink); font-size: 11px; }
+.call .label--sub { fill: var(--muted); font-size: 8.5px; font-weight: 400; }
+.call .ctl { fill: var(--accent-ink); stroke: var(--ink); stroke-width: 2.4; }
+.call .ctl--end { fill: #a3324f; }
 
 .healer__hand {
   position: absolute;
@@ -381,15 +433,15 @@ html:not(.js) .healer__hint { display: none; }
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
   gap: 1rem clamp(2rem, 6vw, 5rem);
   align-items: baseline;
-  padding-block: clamp(1.75rem, 3vw, 2.5rem);
+  padding-block: clamp(1.5rem, 2.4vw, 2rem);
   border-bottom: 1px solid var(--line);
 }
 .worry__q {
-  font-size: clamp(1.6rem, 3vw, 2.5rem);
-  font-weight: 300;
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  font-weight: 400;
   font-style: italic;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
   color: var(--accent);
   padding-bottom: 0.08em;
 }
@@ -522,18 +574,111 @@ html:not(.js) .healer__hint { display: none; }
   .promises { grid-template-columns: 1fr; }
 }
 
+/* ---------- Learn buttons ---------- */
+.learn__ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+/* ---------- Details page header ---------- */
+.subhero { padding-top: clamp(7.5rem, 14vw, 10rem); padding-bottom: var(--section); display: grid; gap: 1.5rem; }
+.subhero__title { font-size: clamp(3rem, 7vw, 6.5rem); }
+
 /* ---------- Learn tagline ---------- */
 .learn__tagline { font-style: italic; color: var(--accent); font-size: 1.15rem; margin-top: -0.75rem; }
+
+/* ---------- No time to learn ---------- */
+/* Default (no JS, reduced motion): every line is visible, the excuses already struck through. */
+.notime { padding-block: var(--section); }
+.notime__stage { display: grid; gap: clamp(0.75rem, 2vh, 1.75rem); justify-items: center; text-align: center; }
+.notime__title {
+  font-size: clamp(2.75rem, min(9vw, 14vh), 8rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1.02;
+  padding-bottom: 0.06em;
+}
+.notime__list { display: grid; justify-items: center; gap: 0.1em; font-size: clamp(1.35rem, min(3.8vw, 5.2vh), 2.9rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.12; }
+.notime__list li { position: relative; width: fit-content; opacity: 0.3; }
+.notime__cta { margin-top: 0.25rem; }
+.notime__list .strike {
+  position: absolute;
+  left: -0.04em; right: -0.04em; top: 56%;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: 0 50%;
+}
+.notime__answer {
+  font-size: clamp(1.75rem, min(4.6vw, 7vh), 3.75rem);
+  font-weight: 300;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  margin-top: clamp(0.25rem, 1.5vh, 1.25rem);
+}
+.notime__answer em { color: var(--accent); padding-bottom: 0.08em; display: inline-block; }
+.notime__sub { color: var(--muted); max-width: 38ch; font-size: clamp(1.05rem, 1.5vw, 1.2rem); }
+
+/* Live (set by JS only when motion is allowed): a tall track with the stage held on screen while it plays. */
+.notime.is-live { padding-block: 0; height: 300vh; }
+.notime.is-live .notime__stage {
+  position: sticky;
+  top: 0;
+  min-height: 100dvh;
+  align-content: center;
+  padding-block: 5.5rem 2rem;
+}
+
+/* ---------- Meet your instructor ---------- */
+.meet { padding-block: var(--section); }
+.meet__stage { display: grid; gap: clamp(1rem, 2.5vh, 2rem); justify-items: center; text-align: center; }
+.meet__title {
+  font-size: clamp(2.25rem, min(6.5vw, 9vh), 5rem);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+}
+.meet__title em { color: var(--accent); padding-bottom: 0.08em; display: inline-block; }
+.instructor {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  width: min(100%, 30rem);
+  padding: clamp(1.5rem, 3vh, 2.25rem) clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid var(--line);
+}
+.instructor__photo { width: clamp(5.25rem, 13vh, 7.5rem); aspect-ratio: 1; margin-bottom: 0.75rem; padding: 0.5rem; place-items: center; text-align: center; font-size: 0.58rem; letter-spacing: 0.12em; }
+.instructor__name { font-size: 1.5rem; font-weight: 400; letter-spacing: -0.01em; }
+.instructor__role { color: var(--accent); font-size: 0.95rem; }
+.instructor__bio { color: var(--muted); max-width: 38ch; margin-top: 0.5rem; }
+.instructor__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+.instructor__facts li { display: grid; gap: 0.15rem; padding-inline: 0.5rem; }
+.instructor__facts li + li { border-left: 1px solid var(--line); }
+.instructor__facts strong { font-size: 0.9rem; font-weight: 500; }
+.instructor__facts span { font-size: 0.75rem; color: var(--muted); }
+
+/* Live (motion allowed): a held stage, like the "No time to learn?" sequence, only shorter. */
+.meet.is-live { padding-block: 0; height: 210vh; }
+.meet.is-live .meet__stage { position: sticky; top: 0; min-height: 100dvh; align-content: center; padding-block: 4.75rem 1rem; }
+
+@media (max-width: 480px) {
+  .instructor { padding-inline: 1rem; }
+  .instructor__facts li { padding-inline: 0.25rem; }
+  .instructor__facts strong { font-size: 0.78rem; }
+  .instructor__facts span { font-size: 0.68rem; }
+}
 
 /* ---------- Healing ---------- */
 .healing {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(2rem, 6vw, 6rem);
-  align-items: end;
+  align-items: center;
 }
-.healing__media { aspect-ratio: 5 / 4; }
-.healing__media img { height: 120%; }
+.healing__media { aspect-ratio: 9 / 10; width: min(100%, 74svh); justify-self: center; }
 .healing__copy { display: grid; gap: 1.5rem; padding-bottom: 1rem; }
 .healing__copy .btn { justify-self: start; }
 .formats { display: grid; gap: 1.25rem; margin-top: 1rem; padding-top: 1.5rem; border-top: 1px solid var(--line); }
@@ -592,8 +737,7 @@ html:not(.js) .healer__hint { display: none; }
   background: var(--accent);
 }
 .learn__note { color: var(--muted); }
-.learn__media { aspect-ratio: 3 / 4; }
-.learn__media img { height: 118%; }
+.learn__media { aspect-ratio: 400 / 545; }
 
 @media (max-width: 860px) {
   .learn { grid-template-columns: 1fr; }
@@ -604,7 +748,8 @@ html:not(.js) .healer__hint { display: none; }
 /* ---------- Principles ---------- */
 .principles {
   background: var(--bg-2);
-  padding-block: var(--section);
+  /* the section is pinned while it plays, so everything must fit one screen: top padding clears the nav */
+  padding-block: 5rem 2.5rem;
   min-height: 100dvh;
   display: grid;
   align-items: center;
@@ -617,7 +762,7 @@ html:not(.js) .healer__hint { display: none; }
   color: var(--accent);
   margin-bottom: 2rem;
 }
-.principles__list { display: grid; gap: 0.25em; font-size: clamp(2rem, 5.2vw, 4.5rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; }
+.principles__list { display: grid; gap: 0.2em; font-size: clamp(1.9rem, min(5.2vw, 8vh), 4.5rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; }
 
 /* ---------- People ---------- */
 .people { padding-block: var(--section); }
