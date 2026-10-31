@@ -36,7 +36,6 @@ export function initHealer(fig, { reduced = false } = {}) {
   tl.to(q('.pupil'), { scaleY: 0, opacity: 0, transformOrigin: '50% 50%', duration: 0.3 }, 0.12)
     .to(q('.stress'), { opacity: 0, scale: 0.5, transformOrigin: '50% 50%', duration: 0.4 }, 0)
     .to(q('.stress-face'), { opacity: 0, duration: 0.5 }, 0)
-    .to(q('.blush'), { opacity: 0.8, duration: 0.8 }, 0.2)
     .fromTo(q('.halo'), { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, svgOrigin: '200 176', duration: 0.7, stagger: 0.12 }, 0.3)
     .fromTo(q('.spark'), { opacity: 0, scale: 0 }, { opacity: 0.9, scale: 1, transformOrigin: '50% 50%', duration: 0.35, stagger: 0.08 }, 0.6)
     .to(q('#head'), { rotation: -3, y: 2, svgOrigin: '200 258', duration: 1 }, 0)
@@ -65,8 +64,10 @@ export function initHealer(fig, { reduced = false } = {}) {
       overwrite: true,
     });
   };
-  const heal = () => { pending?.kill(); go(1); };
-  const release = (hold) => { pending?.kill(); pending = gsap.delayedCall(hold, () => go(0)); };
+  // Once she has been healed she stays calm until the page is refreshed.
+  let healed = false;
+  const heal = () => { healed = true; pending?.kill(); go(1); };
+  const release = (hold) => { if (healed) return; pending?.kill(); pending = gsap.delayedCall(hold, () => go(0)); };
 
   // The hand: follows the pointer with a little lag so it feels weighted, not glued.
   // anchored at the wrist: the palm floats just above the pointer, so her face stays visible
