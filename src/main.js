@@ -219,6 +219,18 @@ mm.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => {
   tl.fromTo(lines, { opacity: 0.14 }, { opacity: 1, duration: 1, stagger: 1, ease: 'none' });
 });
 
+// Phones: no pinning (it fights the browser bar). Each principle fades up as it scrolls into view.
+mm.add('(prefers-reduced-motion: no-preference) and (max-width: 767px)', () => {
+  $$('[data-principle]').forEach((line) => {
+    gsap.fromTo(line, { opacity: 0.14, y: 22 }, {
+      opacity: 1,
+      y: 0,
+      ease: 'none',
+      scrollTrigger: { trigger: line, start: 'top 88%', end: 'top 58%', scrub: true },
+    });
+  });
+});
+
 /* ---------- Hero healer (all motion preferences; reduced motion swaps states without morphing) ---------- */
 const healerEl = $('[data-healer]');
 const destroyHealer = healerEl
