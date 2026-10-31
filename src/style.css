@@ -309,7 +309,6 @@ em { font-style: italic; }
 .healer__art .bindi { fill: #a3324f; }
 .healer__art .stud { fill: var(--accent-ink); stroke: var(--ink); stroke-width: 1.5; }
 .healer__art .pupil { fill: var(--ink); }
-.healer__art .blush { fill: #e58f8a; }
 .healer__art .halo { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-opacity: 0.45; }
 .healer__art .spark { fill: var(--accent); }
 
