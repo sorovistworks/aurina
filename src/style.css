@@ -741,7 +741,7 @@ html:not(.js) .healer__hint { display: none; }
 
 @media (max-width: 860px) {
   .learn { grid-template-columns: 1fr; }
-  .learn__media { order: -1; max-height: 75svh; }
+  .learn__media { max-height: 75svh; }
   .learn__list { grid-template-columns: 1fr; }
 }
 
