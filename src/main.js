@@ -96,6 +96,13 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
     onEnter: (els) => gsap.to(els, { opacity: 1, y: 0, duration: 1, stagger: 0.09, ease: 'expo.out', delay: 0.15 }),
   });
 
+  // "Your 21 days": the rail fills as the reader moves through the days.
+  gsap.fromTo('.journey__fill', { scaleY: 0 }, {
+    scaleY: 1,
+    ease: 'none',
+    scrollTrigger: { trigger: '.journey__track', start: 'top 70%', end: 'bottom 70%', scrub: true },
+  });
+
   // Images drift slightly slower than the page, giving the frames depth.
   $$('[data-parallax]').forEach((img) => {
     gsap.fromTo(img, { yPercent: -14 }, {
