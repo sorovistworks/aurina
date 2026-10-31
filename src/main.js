@@ -133,22 +133,6 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
       .to(answers[2], { opacity: 1, y: 0, duration: 1 }, '>-0.6');
   }
 
-  // "Meet your instructor": the heading rises, then her card arrives, while the stage is held.
-  const meet = $('[data-meet]');
-  if (meet) {
-    meet.classList.add('is-live');
-    const mt = $('[data-meet-title]', meet);
-    const mc = $('[data-meet-card]', meet);
-    gsap.set(mt, { opacity: 0, y: 36 });
-    gsap.set(mc, { opacity: 0, y: 56 });
-    gsap.timeline({
-      defaults: { ease: 'none' },
-      scrollTrigger: { trigger: meet, start: 'top top', end: 'bottom bottom', scrub: 0.6, invalidateOnRefresh: true },
-    })
-      .to(mt, { opacity: 1, y: 0, duration: 1 })
-      .to(mc, { opacity: 1, y: 0, duration: 1.2 }, '>-0.2');
-  }
-
   // Reiki healing: her hands hover above the chest (never touching) and drift slowly down the body.
   // Everything plays only while the picture is on screen.
   const healFig = $('.healing__media');
@@ -193,7 +177,6 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
 
   return () => {
     noTime?.classList.remove('is-live');
-    $('[data-meet]')?.classList.remove('is-live');
     gsap.ticker.remove(tick);
     lenis.destroy();
     lenis = null;
@@ -217,6 +200,37 @@ mm.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => {
     },
   });
   tl.fromTo(lines, { opacity: 0.14 }, { opacity: 1, duration: 1, stagger: 1, ease: 'none' });
+});
+
+// "Meet your instructor", larger screens: the stage is held while the heading rises and the card arrives.
+mm.add('(prefers-reduced-motion: no-preference) and (min-width: 768px)', () => {
+  const meet = $('[data-meet]');
+  if (!meet) return;
+  meet.classList.add('is-live');
+  const mt = $('[data-meet-title]', meet);
+  const mc = $('[data-meet-card]', meet);
+  gsap.set(mt, { opacity: 0, y: 36 });
+  gsap.set(mc, { opacity: 0, y: 56 });
+  gsap.timeline({
+    defaults: { ease: 'none' },
+    scrollTrigger: { trigger: meet, start: 'top top', end: 'bottom bottom', scrub: 0.6, invalidateOnRefresh: true },
+  })
+    .to(mt, { opacity: 1, y: 0, duration: 1 })
+    .to(mc, { opacity: 1, y: 0, duration: 1.2 }, '>-0.2');
+  return () => meet.classList.remove('is-live');
+});
+
+// "Meet your instructor", phones: no holding, so no empty scrolling. The heading, then the card, fade up as they arrive.
+mm.add('(prefers-reduced-motion: no-preference) and (max-width: 767px)', () => {
+  [$('[data-meet-title]'), $('[data-meet-card]')].forEach((el) => {
+    if (!el) return;
+    gsap.fromTo(el, { opacity: 0, y: 30 }, {
+      opacity: 1,
+      y: 0,
+      ease: 'none',
+      scrollTrigger: { trigger: el, start: 'top 90%', end: 'top 62%', scrub: true },
+    });
+  });
 });
 
 // Phones: no pinning (it fights the browser bar). Each principle fades up as it scrolls into view.
