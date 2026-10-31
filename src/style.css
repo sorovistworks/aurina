@@ -762,6 +762,7 @@ html:not(.js) .healer__hint { display: none; }
   color: var(--accent);
   margin-bottom: 2rem;
 }
+@media (max-width: 767px) { .principles { min-height: 0; padding-block: 5rem; } }
 .principles__list { display: grid; gap: 0.2em; font-size: clamp(1.9rem, min(5.2vw, 8vh), 4.5rem); font-weight: 300; letter-spacing: -0.03em; line-height: 1.15; }
 
 /* ---------- People ---------- */
