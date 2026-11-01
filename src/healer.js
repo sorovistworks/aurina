@@ -7,9 +7,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 const MORPHS = [
   ['#brow-l', 'M 164 149 Q 175 142 186 147', 0, 0.75],
   ['#brow-r', 'M 236 149 Q 225 142 214 147', 0, 0.75],
-  ['#lid-l', 'M 165 171 Q 176 179 187 171', 0.15, 0.85],
-  ['#lid-r', 'M 213 171 Q 224 179 235 171', 0.15, 0.85],
-  ['#mouth', 'M 184 220 C 190 229 196 231 200 231 C 204 231 210 229 216 220', 0.25, 0.75],
+  ['#lid-l', 'M 166 171 Q 176 178 186 171', 0.15, 0.85],
+  ['#lid-r', 'M 214 171 Q 224 178 234 171', 0.15, 0.85],
+  ['#mouth', 'M 188 215 C 192 216.5 197 217.5 200 217.5 C 203 217.5 208 216.5 212 215', 0.25, 0.75],
 ];
 
 /**
@@ -33,7 +33,7 @@ export function initHealer(fig, { reduced = false } = {}) {
     },
   });
   for (const [sel, d, at, dur] of MORPHS) tl.to(q(sel), { attr: { d }, duration: dur }, at);
-  tl.to(q('.pupil'), { scaleY: 0, opacity: 0, transformOrigin: '50% 50%', duration: 0.3 }, 0.12)
+  tl.to(q('.pupil, .eyewhite'), { scaleY: 0, opacity: 0, transformOrigin: '50% 50%', duration: 0.3 }, 0.12)
     .to(q('.stress'), { opacity: 0, scale: 0.5, transformOrigin: '50% 50%', duration: 0.4 }, 0)
     .to(q('.stress-face'), { opacity: 0, duration: 0.5 }, 0)
     .fromTo(q('.halo'), { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, svgOrigin: '200 176', duration: 0.7, stagger: 0.12 }, 0.3)
@@ -117,11 +117,11 @@ export function initHealer(fig, { reduced = false } = {}) {
     if (!dirty) return;
     dirty = false;
     const r = fig.getBoundingClientRect();
-    const s = r.width / 400; // viewBox units to px
+    const s = r.width / 300; // viewBox units to px (viewBox is 300 wide, origin 50,17)
     // she looks at the palm, not the cursor tip (the hand floats above the pointer)
     const ty = fig.classList.contains('has-hand') ? py - hand.offsetHeight * 0.5 : py;
-    const dx = px - (r.left + 200 * s); // from the midpoint between her eyes
-    const dy = ty - (r.top + 174 * s);
+    const dx = px - (r.left + (200 - 50) * s); // from the midpoint between her eyes
+    const dy = ty - (r.top + (174 - 17) * s);
     const d = Math.hypot(dx, dy) || 1;
     const k = Math.min(d / (110 * s), 1); // full glance once the pointer is just past her face
     const uy = dy / d;
@@ -133,7 +133,7 @@ export function initHealer(fig, { reduced = false } = {}) {
 
     // proximity to her face, in viewBox units; the gap between 70 and 90 stops flicker at the edge
     if (!fig.classList.contains('has-hand') || document.activeElement === fig) return;
-    const fd = Math.hypot(px - (r.left + 200 * s), py - (r.top + 178 * s)) / s;
+    const fd = Math.hypot(px - (r.left + (200 - 50) * s), py - (r.top + (178 - 17) * s)) / s;
     if (!near && fd < 70) { near = true; heal(); }
     else if (near && fd > 90) { near = false; release(0.5); }
   };
