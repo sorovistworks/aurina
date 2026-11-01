@@ -56,45 +56,29 @@
 
         <figure class="hero__media arch healer" data-intro-media data-healer tabindex="0" role="img" aria-label="Illustration of a woman who looks stressed. Bring your hand to her face to heal her, and she softens into calm.">
           <!-- Code-drawn illustration. Stressed is the default (no-JS) state; healer.js morphs every feature toward calm. -->
-          <svg class="healer__art" viewBox="0 0 400 500" aria-hidden="true">
+          <svg class="healer__art" viewBox="50 17 300 375" aria-hidden="true">
             <g class="halo-set">
               <circle class="halo" cx="200" cy="176" r="112" opacity="0" />
               <circle class="halo" cx="200" cy="176" r="138" opacity="0" />
             </g>
             <g id="body">
-              <path class="skin" d="M 183 232 L 182 288 L 218 288 L 217 232 Z" />
-              <path class="ink" d="M 56 500 C 60 380 108 300 170 272 C 184 296 216 296 230 272 C 292 300 340 380 344 500 Z" />
-              <path class="line-light" d="M 175 281 C 188 301 212 301 225 281" />
-              <path class="cream" d="M 110 302 C 128 290 150 280 166 274 C 158 340 150 420 150 500 L 100 500 C 100 430 104 360 110 302 Z" />
-              <path class="line" d="M 128 308 C 124 372 122 440 122 500" />
+              <!-- GPT-image art (blank face): kurta continues below the image so it reaches the frame bottom -->
+              <path class="kurta-ext" d="M 56 380 L 56 393 L 344 393 L 344 380 Z" />
+              <image href="/img/hero-body.webp" x="48.2" y="52.7" width="302.8" height="378.6" />
             </g>
             <g id="head">
-              <path class="ink" transform="matrix(1.16 0 0 1 -32 0)" d="M 150 140 C 130 190 126 260 140 330 C 152 338 166 336 178 330 L 180 250 C 165 240 156 215 152 190 Z" />
-              <path class="ink" transform="matrix(1.16 0 0 1 -32 0)" d="M 250 140 C 266 180 270 220 262 258 L 236 250 C 246 220 250 190 250 165 Z" />
-              <g class="braid">
-                <path class="ink" d="M 262 411 C 254 430 252 440 256 452 C 266 446 276 446 286 452 C 288 440 282 428 276 411 Z" />
-                <ellipse class="ink braid-seg" cx="272" cy="388" rx="15" ry="19" transform="rotate(-6 272 388)" />
-                <ellipse class="ink braid-seg" cx="271" cy="358" rx="16" ry="20" transform="rotate(-8 271 358)" />
-                <ellipse class="ink braid-seg" cx="268" cy="328" rx="16" ry="20" transform="rotate(-10 268 328)" />
-                <ellipse class="ink braid-seg" cx="263" cy="298" rx="16" ry="20" transform="rotate(-12 263 298)" />
-                <ellipse class="ink braid-seg" cx="258" cy="268" rx="15" ry="19" transform="rotate(-14 258 268)" />
-                <rect class="tie" x="262" y="402" width="20" height="9" rx="4" />
-              </g>
-              <path class="skin" transform="matrix(1.16 0 0 1 -32 0)" d="M 152 168 C 150 124 172 102 200 102 C 228 102 250 124 248 168 C 250 224 230 252 200 252 C 170 252 150 224 152 168 Z" />
-              <path class="ink" transform="matrix(1.16 0 0 1 -32 0)" d="M 200 104 C 186 106 172 118 166 136 C 158 160 156 196 146 234 C 138 214 136 186 140 160 C 142 112 168 84 200 84 C 232 84 258 112 260 160 C 264 186 262 214 254 234 C 244 196 242 160 234 136 C 228 118 214 106 200 104 Z" />
-              <path class="line-light" transform="matrix(1.16 0 0 1 -32 0)" d="M 200 87 L 200 101 M 172 100 C 161 116 153 136 151 160 M 228 100 C 239 116 247 136 249 160" />
-              <circle class="bindi" cx="200" cy="136" r="4" />
+              <image href="/img/hero-head.webp" x="48.2" y="52.7" width="302.8" height="378.6" />
               <path id="brow-l" class="line" d="M 164 153 Q 173 149 186 142" />
               <path id="brow-r" class="line" d="M 236 153 Q 227 149 214 142" />
-              <path class="line thin furrow stress-face" d="M 196 145 L 197 153 M 204 145 L 203 153" />
+              <path class="line thin furrow stress-face" d="M 196 157 L 197 164 M 204 157 L 203 164" />
+              <ellipse class="eyewhite" cx="176" cy="175" rx="10" ry="8" />
+              <ellipse class="eyewhite" cx="224" cy="175" rx="10" ry="8" />
               <circle class="pupil" cx="176" cy="174" r="4.8" />
               <circle class="pupil" cx="224" cy="174" r="4.8" />
-              <path id="lid-l" class="line" d="M 164 168 Q 176 159 188 168" />
-              <path id="lid-r" class="line" d="M 212 168 Q 224 159 236 168" />
+              <path id="lid-l" class="line" d="M 166 168 Q 176 160 186 168" />
+              <path id="lid-r" class="line" d="M 214 168 Q 224 160 234 168" />
               <path class="line thin stress-face" d="M 168 184 Q 176 188 184 184 M 216 184 Q 224 188 232 184" />
-              <path class="line thin" d="M 201 177 Q 196 190 203 194" />
-              <circle class="stud" cx="208" cy="192" r="2.4" />
-              <path id="mouth" class="line" d="M 186 224 C 191 219 196 227 200 223 C 204 219 209 227 214 222" />
+              <path id="mouth" class="line" d="M 189 217 C 193 215.5 197 218.5 200 217 C 203 215.5 207 218.5 211 217" />
               <g class="stress">
                 <path class="line thin" d="M 268 98 L 280 87 M 276 112 L 291 108 M 262 86 L 266 72" />
               </g>
@@ -166,30 +150,7 @@
               <clipPath id="clip-laptop"><rect x="55" y="128" width="248" height="152" rx="6" /></clipPath>
               <clipPath id="clip-phone"><rect x="276" y="218" width="92" height="194" rx="13" /></clipPath>
               <symbol id="woman" viewBox="0 0 200 220">
-                <g class="wm">
-                <path class="ink" d="M 12 220 C 14 178 44 160 82 150 C 90 162 110 162 118 150 C 156 160 186 178 188 220 Z" />
-                <path class="cream" d="M 34 172 C 46 164 62 158 78 153 C 74 182 70 202 70 220 L 24 220 C 24 200 28 186 34 172 Z" />
-                <path class="skin" d="M 91 118 L 90 152 C 96 160 104 160 110 152 L 109 118 Z" />
-                <path class="ink" d="M 56 70 C 46 100 44 132 50 162 L 88 150 L 90 110 Z" />
-                <g class="braid">
-                  <ellipse class="ink braid-seg" cx="142" cy="120" rx="9" ry="11" />
-                  <ellipse class="ink braid-seg" cx="145" cy="141" rx="9" ry="11" />
-                  <ellipse class="ink braid-seg" cx="147" cy="162" rx="9" ry="11" />
-                  <ellipse class="ink braid-seg" cx="148" cy="183" rx="8.5" ry="10.5" />
-                  <rect class="tie" x="140" y="191" width="17" height="7" rx="3.5" />
-                </g>
-                <ellipse class="skin" cx="100" cy="86" rx="37" ry="44" />
-                <path class="ink" d="M 100 46 C 88 47 76 56 72 70 C 68 84 66 100 60 118 C 54 100 54 82 56 68 C 58 34 80 22 100 22 C 120 22 142 34 144 68 C 146 82 146 100 140 118 C 134 100 132 84 128 70 C 124 56 112 47 100 46 Z" />
-                <path class="line-light" d="M 100 25 L 100 43 M 78 40 C 66 54 60 70 58 86 M 122 40 C 134 54 140 70 142 86" />
-                <circle class="bindi" cx="100" cy="64" r="2.8" />
-                <path class="line" d="M 79 78 Q 87 73 95 77 M 121 78 Q 113 73 105 77" />
-                <circle class="pupil" cx="87" cy="88" r="3.6" />
-                <circle class="pupil" cx="113" cy="88" r="3.6" />
-                <path class="line thin" d="M 80 87 Q 87 81 94 87 M 106 87 Q 113 81 120 87" />
-                <path class="line thin" d="M 101 92 Q 98 101 103 103" />
-                <circle class="stud" cx="106" cy="102" r="1.8" />
-                <path class="line" d="M 87 114 Q 100 126 113 114" />
-                </g>
+                <image href="/img/sang.webp" x="12" y="0" width="176" height="220" />
               </symbol>
             </defs>
 
@@ -293,24 +254,7 @@
               </radialGradient>
             </defs>
             <rect class="bed" x="0" y="0" width="500" height="400" />
-            <rect class="pillow" x="128" y="-40" width="244" height="226" rx="54" />
-
-            <!-- hair spread softly on the pillow behind the head -->
-            <path class="ink" d="M 250 38 C 284 38 308 64 310 104 C 312 136 304 158 292 170 L 208 170 C 196 158 188 136 190 104 C 192 64 216 38 250 38 Z" />
-
-            <!-- neck, then one plain top: torso and arms as a single shape -->
-            <path class="patient" d="M 230 158 L 229 214 L 271 214 L 270 158 Z" />
-            <path class="ink torso" d="M 104 400 L 106 280 C 106 256 114 236 134 230 C 152 214 190 204 222 202 C 236 216 264 216 278 202 C 310 204 348 214 366 230 C 386 236 394 256 394 280 L 396 400 Z" />
-
-            <!-- face -->
-            <ellipse class="patient" cx="250" cy="112" rx="48" ry="60" />
-            <path class="ink" d="M 250 44 C 216 44 200 72 202 112 C 210 86 228 74 250 72 C 272 74 290 86 298 112 C 300 72 284 44 250 44 Z" />
-            <path class="line-light" d="M 250 46 V 70" />
-            <circle class="bindi" cx="250" cy="84" r="3" />
-            <path class="line thin" d="M 222 97 Q 232 92 242 96 M 258 96 Q 268 92 278 97" />
-            <path class="line thin" d="M 222 111 Q 232 118 242 111 M 258 111 Q 268 118 278 111" />
-            <path class="line thin" d="M 250 118 Q 246 131 252 134" />
-            <path class="line" d="M 236 149 Q 250 158 264 149" />
+            <image href="/img/patient.webp" x="0" y="0" width="500" height="400" />
 
             <!-- Sanghamitra's hands, palms down, hovering above the chest -->
             <g class="heal-sweep">
@@ -319,22 +263,14 @@
               <ellipse class="hshadow" cx="234" cy="356" rx="58" ry="24" />
               <g class="hbob hbob--l">
                 <!-- her right hand (nearer the head): mirrored so the thumb points down -->
-                <g transform="translate(222 266) rotate(-90) scale(-1.2 1.2) translate(-32 -50)">
-                  <path class="ink" d="M 12 122 L 8 320 L 56 320 L 52 122 Z" />
-                    <path class="fair" d="M 17 78 L 16 124 L 48 124 L 47 78 Z" />
-                    <path class="cream" d="M 11 118 H 53 V 134 H 11 Z" />
-                    <path class="fair" d="M 20 80 C 12 68 7 56 7 45 L 7 31 C 7 25 14 25 14 31 L 14 42 L 15 15 C 15 8 23 8 23 15 L 23 38 L 25 9 C 25 2 33 2 33 9 L 32 38 L 35 12 C 36 5 43 6 43 13 L 41 41 L 46 24 C 48 18 55 20 53 26 L 49 52 C 47 63 43 71 41 80 Z" />
-                    <path class="bangle" d="M 16 92 Q 32 98 48 92" />
+                <g transform="translate(222 266) rotate(-90) scale(1.2 1.2) translate(-32 -50)">
+                  <image href="/img/hand.webp" x="-41.6" y="-6" width="150.4" height="268.8" />
                 </g>
               </g>
               <g class="hbob hbob--r">
                 <!-- her left hand: thumb points up, toward the other thumb -->
-                <g transform="translate(222 336) rotate(-90) scale(1.2 1.2) translate(-32 -50)">
-                  <path class="ink" d="M 12 122 L 8 320 L 56 320 L 52 122 Z" />
-                    <path class="fair" d="M 17 78 L 16 124 L 48 124 L 47 78 Z" />
-                    <path class="cream" d="M 11 118 H 53 V 134 H 11 Z" />
-                    <path class="fair" d="M 20 80 C 12 68 7 56 7 45 L 7 31 C 7 25 14 25 14 31 L 14 42 L 15 15 C 15 8 23 8 23 15 L 23 38 L 25 9 C 25 2 33 2 33 9 L 32 38 L 35 12 C 36 5 43 6 43 13 L 41 41 L 46 24 C 48 18 55 20 53 26 L 49 52 C 47 63 43 71 41 80 Z" />
-                    <path class="bangle" d="M 16 92 Q 32 98 48 92" />
+                <g transform="translate(222 336) rotate(-90) scale(-1.2 1.2) translate(-32 -50)">
+                  <image href="/img/hand.webp" x="-41.6" y="-6" width="150.4" height="268.8" />
                 </g>
               </g>
             </g>

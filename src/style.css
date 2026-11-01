@@ -310,6 +310,11 @@ em { font-style: italic; }
 .healer__art .bindi { fill: #a3324f; }
 .healer__art .stud { fill: var(--accent-ink); stroke: var(--ink); stroke-width: 1.5; }
 .healer__art .pupil { fill: var(--ink); }
+.healer__art #mouth { stroke-width: 2.8; }
+.healer__art .kurta-ext { fill: #281829; }
+[data-healer] .healer__art .line { stroke-width: 3; }
+[data-healer] .healer__art .line.thin { stroke-width: 2; }
+.healer__art .eyewhite { fill: var(--accent-ink); }
 .healer__art .halo { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-opacity: 0.45; }
 .healer__art .spark { fill: var(--accent); }
 
