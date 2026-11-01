@@ -118,10 +118,9 @@ export function initHealer(fig, { reduced = false } = {}) {
     dirty = false;
     const r = fig.getBoundingClientRect();
     const s = r.width / 300; // viewBox units to px (viewBox is 300 wide, origin 50,17)
-    // she looks at the palm, not the cursor tip (the hand floats above the pointer)
-    const ty = fig.classList.contains('has-hand') ? py - hand.offsetHeight * 0.5 : py;
+    const ty = py;
     const dx = px - (r.left + (200 - 50) * s); // from the midpoint between her eyes
-    const dy = ty - (r.top + (174 - 17) * s);
+    const dy = ty - (r.top + (175 - 17) * s);
     const d = Math.hypot(dx, dy) || 1;
     const k = Math.min(d / (110 * s), 1); // full glance once the pointer is just past her face
     const uy = dy / d;
