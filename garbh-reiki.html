@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Garbh Reiki Ebook | Aurina</title>
+    <meta name="description" content="The Garbh Reiki ebook: a fifteen-minute, lying-down Reiki practice for pregnancy and the trying months, in Hinglish. Start tonight, ₹499." />
+    <meta name="theme-color" content="#1D1527" />
+    <meta property="og:title" content="Garbh Reiki Ebook | Aurina" />
+    <meta property="og:description" content="Tonight, your hands rest on your baby. A fifteen-minute Reiki practice for pregnancy, in Hinglish. ₹499." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Runs before paint: hide intro elements only when motion will actually play them in.
+      (function (d) {
+        var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        d.classList.add('js', reduce ? 'reduced' : 'motion');
+        setTimeout(function () { d.classList.add('intro-done'); }, 3500);
+      })(document.documentElement);
+    </script>
+    <script type="module" src="/src/garbh.js"></script>
+  </head>
+  <body class="g">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!--
+      One job: sell the ₹499 ebook. Every buy button has the same label and goes to #buy.
+      The buy button itself opens WhatsApp until the NexaFunnels checkout exists (funnel.md, setup deferred).
+    -->
+    <header class="gnav" data-nav>
+      <div class="gnav__inner gwrap">
+        <a class="brand" href="./" aria-label="Aurina, home">aurina</a>
+        <nav class="gnav__links" aria-label="Garbh Reiki ebook">
+          <a href="#try">Try it</a>
+          <a href="#inside">What's inside</a>
+          <a href="#questions">Questions</a>
+        </nav>
+        <a class="gbtn gbtn--light gnav__cta" href="#buy">Get the ebook · ₹499</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="ghero gwrap" aria-labelledby="g-title">
+        <div class="ghero__copy">
+          <h1 class="ghero__title" id="g-title" data-intro>Tonight, your hands <em>rest on your baby.</em></h1>
+          <p class="ghero__sub" data-intro>A fifteen-minute, lying-down Reiki practice for pregnancy, in Hinglish. Download it now, begin tonight.</p>
+          <div class="ghero__ctas" data-intro>
+            <a class="gbtn gbtn--light" href="#buy" data-hero-buy>Get the ebook · ₹499</a>
+            <a class="gbtn gbtn--line" href="#try">Try one minute first</a>
+          </div>
+        </div>
+        <figure class="ghero__media" data-intro-media>
+          <div class="breath" aria-hidden="true"><span class="breath__glow"></span><span class="breath__ring"></span></div>
+          <img class="ghero__img" src="/img/garbh/full.webp" width="521" height="1200" alt="Sanghamitra, shown as a warm animated character in a sage kurta and cream stole, smiling." fetchpriority="high" />
+          <figcaption class="breath__count">
+            <span class="breath__in">saans andar, 1 2 3 4</span>
+            <span class="breath__out">saans bahar, 1 2 3 4 5 6</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- THE FEAR -->
+      <section class="gfear" aria-label="Why this ebook exists">
+        <p class="gfear__text gwrap" data-scrub-words>Doctors look after your body. Family looks after the rituals. Nobody looks after <em>your fear.</em> This ebook is for that.</p>
+      </section>
+
+      <!-- WORRIES -->
+      <section class="gworries gwrap" aria-labelledby="g-worries">
+        <h2 class="visually-hidden" id="g-worries">The questions that keep you awake</h2>
+        <ul class="gworries__list" data-worries>
+          <li>Is my baby's heart still beating?</li>
+          <li>What if it happens again?</li>
+          <li>Am I doing enough for my baby?</li>
+        </ul>
+        <p class="gworries__answer" data-worries-answer>Fifteen minutes. <em>Your hands.</em> Tonight.</p>
+      </section>
+
+      <!-- TRY IT: she feels it before she pays -->
+      <section class="gtry gwrap" id="try" aria-labelledby="g-try" data-try>
+        <div class="gtry__head">
+          <h2 class="gh2" id="g-try" data-split>Try one minute, <em>right now.</em></h2>
+          <p class="glead">Lie back or sit comfortably. This is the very first exercise in the ebook.</p>
+        </div>
+
+        <div class="gtry__panel">
+          <div class="gtry__step" data-step="1">
+            <label class="gtry__q" for="calm-before">How calm do you feel right now?</label>
+            <div class="gtry__scale">
+              <input type="range" id="calm-before" min="1" max="10" value="4" data-before />
+              <output for="calm-before" data-before-out>4</output>
+            </div>
+            <p class="gtry__ends"><span>1, very anxious</span><span>10, completely calm</span></p>
+            <button class="gbtn gbtn--light" type="button" data-start>Start the minute</button>
+          </div>
+
+          <div class="gtry__step" data-step="2" hidden>
+            <p class="gtry__q">Place both hands gently on your belly. Breathe with the ring.</p>
+            <div class="gtry__ring" aria-hidden="true"><span></span></div>
+            <p class="gtry__cue" aria-live="polite" data-cue>saans andar</p>
+            <p class="gtry__left" data-left>60 seconds</p>
+            <button class="gtry__skip" type="button" data-skip>I'm done</button>
+          </div>
+
+          <div class="gtry__step" data-step="3" hidden>
+            <label class="gtry__q" for="calm-after">And now?</label>
+            <div class="gtry__scale">
+              <input type="range" id="calm-after" min="1" max="10" value="4" data-after />
+              <output for="calm-after" data-after-out>4</output>
+            </div>
+            <p class="gtry__ends"><span>1, very anxious</span><span>10, completely calm</span></p>
+            <button class="gbtn gbtn--light" type="button" data-show>See my Calm Score</button>
+          </div>
+
+          <div class="gtry__step" data-step="4" hidden>
+            <p class="gtry__score" aria-live="polite"><span data-from>4</span> <span class="gtry__arrow">→</span> <span data-to>5</span></p>
+            <p class="gtry__msg" data-msg>That was one minute. The ebook gives you fifteen, every night.</p>
+            <a class="gbtn gbtn--light" href="#buy">Get the ebook · ₹499</a>
+            <p class="gtry__fine">Everyone feels it differently, and some nights it takes longer. That's normal.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT'S INSIDE -->
+      <section class="ginside gwrap" id="inside" aria-labelledby="g-inside">
+        <h2 class="gh2" id="g-inside" data-split>What's <em>inside</em></h2>
+        <div class="ginside__grid">
+          <div class="ginside__group">
+            <h3>Tonight</h3>
+            <ul><li>Page 1: your first Calm Score, in ten minutes</li><li>The fifteen-minute routine, lying down, hands on your belly</li></ul>
+          </div>
+          <div class="ginside__group">
+            <h3>For the hard nights</h3>
+            <ul><li>Raat ki ghabrahat ke liye</li><li>Scan wale hafte ke liye</li><li>What to do with the "what ifs"</li></ul>
+          </div>
+          <div class="ginside__group">
+            <h3>For your family</h3>
+            <ul><li>Jab koi kahe "good news?"</li><li>A one-page explainer to show your doctor</li></ul>
+          </div>
+          <div class="ginside__group">
+            <h3>To keep going</h3>
+            <ul><li>Lying-down hand positions for each trimester</li><li>The 21-day practice and your Calm Score tracker</li></ul>
+          </div>
+        </div>
+        <p class="ginside__value">Everything in it, bought as separate guides, would cost ₹1,296. <em>The ebook is ₹499.</em></p>
+      </section>
+
+      <!-- WHO WROTE IT -->
+      <section class="gteacher gwrap" aria-labelledby="g-teacher">
+        <figure class="gteacher__media">
+          <img src="/img/garbh/face.webp" width="537" height="1200" loading="lazy" alt="Sanghamitra as an animated character, smiling, with curly hair and glasses." />
+        </figure>
+        <div class="gteacher__copy">
+          <h2 class="gh2" id="g-teacher" data-split>Written by <em>Sanghamitra</em></h2>
+          <p class="gteacher__creds">Psychology graduate. Certified Reiki teacher since 2019. A mother.</p>
+          <p>She holds the Grand Master degree in the Usui Shiki Ryoho lineage, and wrote this ebook from the way she teaches: simple, calm, and something you can do yourself.</p>
+          <dl class="gteacher__never">
+            <dt>The honest part</dt>
+            <dd>The ebook teaches you the practice. Being attuned and certified needs a teacher, which she does in her 1:1 course, and your ₹499 counts towards it for 30 days.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- BUY -->
+      <section class="gbuy gwrap" id="buy" aria-labelledby="g-buy" data-buy>
+        <div class="gbuy__card">
+          <div class="gbuy__left">
+            <h2 class="gbuy__title" id="g-buy">The Garbh Reiki Ebook</h2>
+            <ul>
+              <li>The fifteen-minute lying-down practice</li>
+              <li>Help for the hard nights and scan weeks</li>
+              <li>Hand positions for each trimester</li>
+              <li>Your 21-day Calm Score tracker</li>
+            </ul>
+          </div>
+          <div class="gbuy__right">
+            <p class="gbuy__was">Worth ₹1,296</p>
+            <p class="gbuy__price">₹499</p>
+            <a class="gbtn gbtn--light gbtn--big" href="https://wa.me/%VITE_WHATSAPP%?text=Hi%20Aurina%2C%20I%20would%20like%20the%20Garbh%20Reiki%20ebook%20(%E2%82%B9499)." target="_blank" rel="noopener">Get the ebook · ₹499</a>
+            <p class="gbuy__small">In Hinglish. Yours to keep. Begin tonight.</p>
+          </div>
+        </div>
+        <div class="gbuy__promise">
+          <p><b>The 7-night promise.</b> Practise for seven nights and log your Calm Score. If you don't feel calmer, tell us and you get every rupee back.</p>
+          <p><b>Always alongside your doctor.</b> Pain, bleeding, or your baby moving less: call your doctor or hospital first, today.</p>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="gfaq gwrap" id="questions" aria-labelledby="g-faq">
+        <h2 class="gh2" id="g-faq" data-split>Before you <em>buy</em></h2>
+        <div class="gfaq__list">
+          <details><summary>Is Reiki safe in pregnancy?</summary><p>It's gentle touch and breathing, done lying down. Sanghamitra's lineage teaches it at any stage; some teachers prefer to wait until 12 weeks, so tell your gynaecologist you're starting.</p></details>
+          <details><summary>Will this help me conceive, or keep my baby healthy?</summary><p>No, and nobody honest can promise that. This is calm for you and connection with your baby, alongside your doctor's care.</p></details>
+          <details><summary>Can the ebook make me Reiki Level 1?</summary><p>It teaches you everything Level 1 covers, and you can practise from it. Becoming Level 1 means an attunement from a teacher, which Sanghamitra does in her 1:1 course.</p></details>
+          <details><summary>I've been told to rest. Can I still do it?</summary><p>Yes. Everything is done lying down.</p></details>
+          <details><summary>I'm still trying to conceive. Is it for me?</summary><p>Yes. Start now, so the practice is already yours when your baby comes.</p></details>
+          <details><summary>What language is it in?</summary><p>Hinglish, in Roman script, the way you'd talk to a friend.</p></details>
+          <details><summary>How do I get it?</summary><p>Tap "Get the ebook". You pay by UPI or card, and the ebook comes to you on WhatsApp.</p></details>
+        </div>
+      </section>
+
+      <!-- THE OTHER TWO WAYS: deliberately small, leading to their own page -->
+      <section class="gmore gwrap" aria-labelledby="g-more">
+        <h2 class="gmore__title" id="g-more">Want her to teach you herself?</h2>
+        <div class="gmore__grid">
+          <a class="gmore__card" href="./garbh-reiki-personal.html#plans">
+            <span class="gmore__name">Garbh Reiki 1:1 Course</span>
+            <span class="gmore__line">Live attunement, your certificate, and her voice in your hardest weeks.</span>
+            <span class="gmore__price">₹2,999</span>
+            <span class="gmore__go">See what's included →</span>
+          </a>
+          <a class="gmore__card" href="./garbh-reiki-personal.html#plans">
+            <span class="gmore__name">Nine Months Together</span>
+            <span class="gmore__line">Her, with you until six weeks after birth, your husband attuned too.</span>
+            <span class="gmore__price">₹14,999</span>
+            <span class="gmore__go">See what's included →</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="gfoot gwrap">
+      <p class="brand">aurina</p>
+      <p>Garbh Reiki is a self-care practice for calm and connection. It is not medical treatment and never replaces your doctor's care.</p>
+      <p><a href="mailto:%VITE_EMAIL%">%VITE_EMAIL%</a> · %VITE_CITY%</p>
+    </footer>
+
+    <!-- Mobile: the purchase is always one tap away (hidden while the hero or buy box is on screen). -->
+    <div class="gbar" data-bar aria-hidden="true">
+      <span class="gbar__price">₹499 <small>Garbh Reiki Ebook</small></span>
+      <a class="gbtn gbtn--light" href="#buy" tabindex="-1">Get the ebook</a>
+    </div>
+  </body>
+</html>
