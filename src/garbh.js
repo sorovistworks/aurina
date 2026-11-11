@@ -206,7 +206,7 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
 
   /* Panels settle in softly. */
   if ($('.gprices__grid')) gsap.from('.gplan', { y: 30, opacity: 0, stagger: 0.12, duration: 1.1, ease: 'expo.out', scrollTrigger: { trigger: '.gprices__grid', start: 'top 80%' } });
-  if ($('.ginside__grid')) gsap.from('.ginside__group', { y: 26, opacity: 0, stagger: 0.1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '.ginside__grid', start: 'top 80%' } });
+  if ($('[data-chaps]')) gsap.from('[data-chaps] > li', { y: 30, opacity: 0, stagger: 0.12, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: '[data-chaps]', start: 'top 82%' } });
   if ($('.gbuy__card')) gsap.from('.gbuy__card', { y: 40, opacity: 0, duration: 1.2, ease: 'expo.out', scrollTrigger: { trigger: '.gbuy__card', start: 'top 85%' } });
   if ($('.gteacher__media')) gsap.from('.gteacher__media', { clipPath: 'inset(100% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut', scrollTrigger: { trigger: '.gteacher', start: 'top 75%' } });
 
