@@ -64,8 +64,8 @@ if (tryEl) {
     $('[data-to]', tryEl).textContent = b;
     $('[data-msg]', tryEl).textContent =
       b > a ? 'That was one minute. The ebook gives you fifteen, every night.'
-      : b === a ? 'Some nights it takes longer than a minute. The ebook gives you fifteen, and a routine for the hard nights.'
-      : "That's okay. Anxious nights are exactly what the full fifteen minutes are for.";
+      : b === a ? 'Some nights take longer. The ebook gives you fifteen minutes.'
+      : "That's okay. Anxious nights are what the full fifteen minutes are for.";
     show(4);
     if (!reduceMotion) gsap.from($('.gtry__score', tryEl), { scale: 0.9, opacity: 0, duration: 0.9, ease: 'expo.out' });
   });
@@ -104,13 +104,39 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
     gsap.set('[data-intro], [data-intro-media]', { opacity: 1 });
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' }, onComplete: () => root.classList.add('intro-done') });
     if ($('.breath')) tl.from('.breath', { opacity: 0, scale: 0.85, duration: 2.2 }, 0);
-    tl.from('[data-intro-media] img', { yPercent: 6, opacity: 0, duration: 1.8 }, 0.2)
+    tl.from($('[data-intro-media] .gbook') || $('[data-intro-media] img'), { y: 40, opacity: 0, duration: 1.8 }, 0.2)
       .from(heroSplit.words, { yPercent: 115, duration: 1.3, stagger: 0.07 }, 0.4)
       .from('.ghero__sub', { y: 18, opacity: 0, duration: 1.1 }, 0.85)
       .from('.ghero .ghero__ctas', { y: 18, opacity: 0, duration: 1.1 }, 1);
     if ($('.breath__count')) tl.from('.breath__count', { opacity: 0, duration: 1.2 }, 1.2);
   } else {
     root.classList.add('intro-done');
+  }
+
+  /* The ebook rests facing you and turns towards the cursor, left or right. The pull is full over the book
+     and fades out smoothly with distance, so far from the book it simply rests. */
+  const book = $('[data-book]');
+  if (book && matchMedia('(hover: hover)').matches) {
+    const body = $('.gbook__body', book);
+    const ry = gsap.quickTo(body, '--ry', { duration: 0.9, ease: 'power3.out' });
+    const rx = gsap.quickTo(body, '--rx', { duration: 0.9, ease: 'power3.out' });
+    const sx = gsap.quickTo(body, '--sx', { duration: 0.9, ease: 'power3.out' });
+    gsap.set(body, { '--ry': 0, '--rx': 0, '--sx': 40 });
+    const REACH = 560; // px beyond the book's edge where the pull reaches zero
+    const clamp = (v) => Math.max(-1, Math.min(1, v));
+    const move = (e) => {
+      const r = book.getBoundingClientRect(), hw = r.width / 2, hh = r.height / 2;
+      const dx = e.clientX - (r.left + hw), dy = e.clientY - (r.top + hh);
+      const t = Math.min(1, Math.hypot(Math.max(0, Math.abs(dx) - hw), Math.max(0, Math.abs(dy) - hh)) / REACH);
+      const f = 1 - t * t * (3 - 2 * t); // smoothstep falloff
+      const px = clamp(dx / hw) * f, py = clamp(dy / hh) * f;
+      ry(px * 20); rx(-py * 6); sx(40 + px * 25);
+    };
+    const rest = () => { ry(0); rx(0); sx(40); };
+    window.addEventListener('pointermove', move, { passive: true });
+    document.documentElement.addEventListener('pointerleave', rest);
+    window.addEventListener('blur', rest);
+    reverts.push(() => { window.removeEventListener('pointermove', move); document.documentElement.removeEventListener('pointerleave', rest); window.removeEventListener('blur', rest); gsap.set(body, { clearProps: '--ry,--rx,--sx' }); });
   }
 
   /* The fear: words brighten at reading pace as the sentence scrolls through. */
@@ -143,6 +169,32 @@ mm.add('(prefers-reduced-motion: no-preference)', () => {
   if (journey) {
     gsap.fromTo(journey, { '--draw': 0 }, { '--draw': 1, ease: 'none', scrollTrigger: { trigger: journey, start: 'top 85%', end: 'bottom 55%', scrub: true } });
     gsap.from($$('li', journey), { opacity: 0, y: 16, stagger: 0.1, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: journey, start: 'top 80%' } });
+  }
+
+  /* Credentials: the joining line draws, then the four tiles rise in turn. */
+  $$('[data-creds]').forEach((list) => {
+    gsap.fromTo(list, { '--draw': 0 }, { '--draw': 1, duration: 1.4, ease: 'expo.inOut', scrollTrigger: { trigger: list, start: 'top 82%' } });
+    gsap.from($$('li', list), { y: 24, opacity: 0, stagger: 0.12, duration: 1, ease: 'expo.out', scrollTrigger: { trigger: list, start: 'top 82%' } });
+  });
+  if ($('[data-facts]')) gsap.from('[data-facts] li', { y: 16, opacity: 0, stagger: 0.08, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: '[data-facts]', start: 'top 85%' } });
+  if ($('[data-tracker]')) gsap.from('[data-tracker] i', { scale: 0, opacity: 0, stagger: 0.025, duration: 0.6, ease: 'back.out(2)', scrollTrigger: { trigger: '[data-tracker]', start: 'top 88%' } });
+
+  /* The price reveal: ₹1,296 is struck through, then counts down to ₹499.
+     Without motion (or JS) the page simply shows ₹499. */
+  const price = $('[data-price]');
+  if (price) {
+    const num = $('[data-count]', price), strike = $('.gbuy__strike', price), was = $('.gbuy__was');
+    const FROM = 1296, TO = 499, fmt = (n) => `₹${Math.round(n).toLocaleString('en-IN')}`;
+    const count = { v: FROM };
+    num.textContent = fmt(FROM);
+    if (was) gsap.set(was, { opacity: 0, y: 10 });
+    const ptl = gsap.timeline({ scrollTrigger: { trigger: price, start: 'top 92%', once: true } });
+    ptl.fromTo(strike, { scaleX: 0, opacity: 1 }, { scaleX: 1, duration: 0.75, ease: 'power2.inOut' }, 0.3)
+      .to(strike, { opacity: 0, duration: 0.35 }, '+=0.25')
+      .to(count, { v: TO, duration: 1.6, ease: 'power3.out', onUpdate: () => { num.textContent = fmt(count.v); } }, '<')
+      .to(was || {}, { opacity: 1, y: 0, duration: 0.9, ease: 'expo.out' }, '<0.3')
+      .fromTo(price, { scale: 1 }, { scale: 1.08, duration: 0.25, ease: 'power2.out', yoyo: true, repeat: 1, transformOrigin: 'left center' }, '-=0.3');
+    reverts.push(() => { ptl.kill(); num.textContent = fmt(TO); gsap.set([strike, was, price].filter(Boolean), { clearProps: 'all' }); });
   }
 
   /* Section headings rise word by word as they arrive. */

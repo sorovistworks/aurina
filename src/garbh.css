@@ -1,7 +1,7 @@
 /*
   Garbh Reiki page. Direction "Plum dusk" (chosen 2026-11-11):
   the page lives at 9 PM, in Aurina's plum taken to night, with one warm lamp glow.
-  One theme (dark) by design, one accent (lavender), one type family (Hanken Grotesk),
+  One theme (dark) by design, one accent (apricot glow, chosen 2026-11-11), one type family (Hanken Grotesk),
   italic emphasis in the same family, radius system: pills for buttons, 22px for panels, arches for portraits.
 */
 
@@ -12,7 +12,8 @@
   --ink: #f3edf8;          /* main text on night */
   --soft: #cbbfdb;         /* secondary text */
   --mute: #9d90b0;         /* tertiary text */
-  --accent: #d9c7ea;       /* lavender: emphasis, rules */
+  --accent: #ffb48a;       /* apricot glow: emphasis, prices, buy buttons, rules */
+  --on-accent: #2a1636;    /* text on the accent */
   --glow: 255 214 160;     /* the warm lamp, rgb */
   --line: rgb(243 237 248 / 0.12);
   --panel: rgb(243 237 248 / 0.05);
@@ -57,11 +58,17 @@ body.g::before {
   display: inline-flex; align-items: center; justify-content: center;
   min-height: 48px; padding: 12px 24px; border-radius: 999px;
   font-weight: 600; font-size: 16px; text-decoration: none; white-space: nowrap;
-  transition: transform 0.25s var(--ease), background-color 0.25s var(--ease), border-color 0.25s var(--ease);
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.55s var(--ease), background-color 0.3s var(--ease), border-color 0.3s var(--ease);
 }
-.gbtn:active { transform: scale(0.98); }
-.gbtn--light { background: var(--ink); color: #3b1f52; }
-.gbtn--light:hover { background: #fff8ff; }
+/* Hover: the button swells in place with a soft spring overshoot; pressing settles it back down. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .gbtn:hover { transform: scale(1.06); }
+  .gbtn--pop:hover { box-shadow: 0 20px 46px -14px var(--accent), 0 0 0 1px rgb(255 196 163 / 0.5); }
+  .gbtn--line:hover { background-color: rgb(243 237 248 / 0.06); box-shadow: 0 16px 36px -18px rgb(0 0 0 / 0.6); }
+}
+.gbtn:active { transform: scale(0.97); transition-duration: 0.15s; }
+.gbtn--pop { background: var(--accent); color: var(--on-accent); box-shadow: 0 12px 34px -16px var(--accent); }
+.gbtn--pop:hover { background: #ffc4a3; }
 .gbtn--line { border: 1px solid rgb(243 237 248 / 0.34); color: var(--ink); }
 .gbtn--line:hover { border-color: var(--ink); }
 
@@ -84,13 +91,41 @@ body.g::before {
 .ghero__title { font-weight: 300; font-size: clamp(40px, 4.4vw, 62px); line-height: 1.1; letter-spacing: -0.03em; padding-bottom: 0.08em; text-wrap: balance; }
 .ghero__sub { margin-top: 22px; font-size: 19px; color: var(--soft); max-width: 34ch; }
 .ghero__ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
-.ghero__media { position: relative; height: min(640px, 76dvh); margin-bottom: 36px; display: flex; justify-content: center; align-items: flex-end; }
-.ghero__img { position: relative; z-index: 2; height: min(600px, 72dvh); width: auto; filter: drop-shadow(0 0 48px rgb(var(--glow) / 0.22)); }
+.ghero__media { position: relative; height: min(640px, 76dvh); margin-bottom: 36px; display: flex; justify-content: center; align-items: center; }
+.ghero__sub mark { background: none; color: var(--ink); }
+
+/* The ebook, as a real book: CSS 3D (cover, spine, page edge). It rests facing you and turns towards the cursor, fading with distance (garbh.js). */
+.gbook { position: relative; z-index: 2; }
+.gbook::before { content: ""; position: absolute; inset: -14% -26%; z-index: -1; border-radius: 50%; background: radial-gradient(closest-side, rgb(255 160 110 / 0.5), rgb(255 160 110 / 0.16) 60%, transparent); pointer-events: none; }
+.gbook::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: -34px; height: 30px; border-radius: 50%; background: radial-gradient(closest-side, rgb(6 3 10 / 0.6), transparent); z-index: -1; }
+/* No preserve-3d: Chrome can drop tiles of nested 3D layers once part of the scene is scrolled off screen.
+   Instead every piece carries the same tilt (--tilt) plus its own depth, and the DOM order paints them back to front. */
+.gbook__body {
+  --w: min(280px, 24vw, 33dvh); /* book width */
+  --t: 26px;                    /* thickness */
+  --r: 24px;                    /* rounded corners on the opening side, shared by cover and page block */
+  --tilt: perspective(1600px) rotateY(calc(var(--ry, 0) * 1deg)) rotateX(calc(var(--rx, 0) * 1deg));
+  position: relative; width: var(--w); aspect-ratio: 2 / 3;
+}
+.gbook__back, .gbook__pages i, .gbook__cover, .gbook__shine { position: absolute; inset: 0; border-radius: 2px var(--r) var(--r) 2px; }
+.gbook__back { background: #1c1622; transform: var(--tilt) translateZ(calc(var(--t) / -2)); }
+.gbook__pages { position: absolute; inset: 0; pointer-events: none; }
+/* Page block: hollow page-shaped rims between the covers, so its edge follows the rounded corners. */
+.gbook__pages i { inset: 3px 3px 3px 3px; border-radius: 2px calc(var(--r) - 3px) calc(var(--r) - 3px) 2px; border: solid #dccbb6; border-width: 3px 6px 3px 0; transform: var(--tilt) translateZ(calc(var(--t) / 2 - 1.5px - var(--i) * (var(--t) - 3px) / 13)); }
+.gbook__pages i:nth-child(even) { border-color: #c3af98; }
+/* Spine: a strip at the book's centre, pushed out to the left edge and turned to face sideways. */
+.gbook__spine { position: absolute; top: 0; height: 100%; width: var(--t); left: calc(50% - var(--t) / 2); transform: var(--tilt) translateX(calc(var(--w) / -2)) rotateY(-90deg); background: linear-gradient(90deg, #1e1724, #3b2e45 45%, #2c2234 70%, #1a1420); box-shadow: inset 0 0 0 1px rgb(255 214 160 / 0.08); }
+.gbook__cover { width: 100%; height: 100%; transform: var(--tilt) translateZ(calc(var(--t) / 2)); }
+.gbook__shine { pointer-events: none; transform: var(--tilt) translateZ(calc(var(--t) / 2)); background: linear-gradient(105deg, transparent calc(var(--sx, 40) * 1%), rgb(255 236 220 / 0.015) calc(var(--sx, 40) * 1% + 10%), transparent calc(var(--sx, 40) * 1% + 22%)), linear-gradient(90deg, rgb(0 0 0 / 0.16), transparent 5%); }
+@media (prefers-reduced-motion: no-preference) {
+  .gbook__float { animation: g-float 7s ease-in-out infinite; }
+}
+@keyframes g-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 .breath { position: absolute; inset: 0; display: grid; place-items: center; z-index: 1; }
-.breath__ring, .breath__glow { position: absolute; width: min(460px, 82%); aspect-ratio: 1; border-radius: 50%; top: 10%; }
+.breath__ring, .breath__glow { position: absolute; width: min(460px, 82%); aspect-ratio: 1; border-radius: 50%; }
 .breath__ring { border: 1px solid rgb(243 237 248 / 0.26); }
-.breath__glow { background: radial-gradient(circle, rgb(var(--glow) / 0.34), rgb(var(--glow) / 0.06) 55%, transparent 70%); }
-.breath__count { position: absolute; bottom: -38px; left: 0; right: 0; height: 26px; text-align: center; color: #eadcc0; font-size: 16px; letter-spacing: 0.02em; z-index: 3; }
+.breath__glow { background: radial-gradient(circle, rgb(var(--glow) / 0.5), rgb(var(--glow) / 0.12) 52%, transparent 72%); }
+.breath__count { position: absolute; bottom: -44px; left: 0; right: 0; height: 26px; text-align: center; color: #eadcc0; font-size: 16px; letter-spacing: 0.02em; z-index: 3; }
 .breath__count span { position: absolute; inset: 0; opacity: 0; }
 
 /* The breath models the practice itself: 4 seconds in, 6 seconds out. */
@@ -136,6 +171,22 @@ body.g::before {
 .gnight__steps p { color: var(--soft); margin-top: 4px; max-width: 42ch; }
 .gnight__score::before { background: rgb(var(--glow)) !important; border-color: rgb(var(--glow)) !important; box-shadow: 0 0 22px rgb(var(--glow) / 0.6); }
 
+/* ---------- Icons (Solar, linear, via Iconify): sized by font-size, drawn in the accent ---------- */
+.gi { width: 1em; height: 1em; flex: none; color: var(--accent); }
+.gi--lg { font-size: 42px; }
+.gi--xl { font-size: 54px; display: block; margin-bottom: 16px; }
+
+/* ---------- Credentials: four arch tiles joined by one line ---------- */
+.gcreds { list-style: none; position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 26px; }
+.gcreds::before { content: ""; position: absolute; left: 12%; right: 12%; top: 46px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent) 12%, var(--accent) 88%, transparent); opacity: 0.55; transform-origin: left; transform: scaleX(var(--draw, 1)); }
+.gcreds li { position: relative; display: grid; justify-items: center; text-align: center; gap: 2px; }
+.gcreds__ico { display: grid; place-items: center; width: 80px; height: 92px; border-radius: 999px 999px 20px 20px; background: linear-gradient(180deg, rgb(var(--glow) / 0.16), var(--night-2) 70%); border: 1px solid rgb(var(--glow) / 0.32); box-shadow: 0 0 28px -8px rgb(255 160 110 / 0.45); font-size: 40px; margin-bottom: 14px; }
+.gcreds b { font-weight: 500; font-size: 17px; line-height: 1.25; }
+.gcreds li > span:last-child { color: var(--soft); font-size: 14px; line-height: 1.35; }
+.gwho { padding-block: 20px clamp(40px, 6vw, 80px); }
+.gwho__title { font-weight: 300; font-size: clamp(28px, 3vw, 38px); letter-spacing: -0.015em; text-align: center; }
+.gwho .gcreds { max-width: 860px; margin: 34px auto 0; }
+
 /* ---------- Teacher ---------- */
 .gteacher { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 64px; align-items: center; padding-block: 40px clamp(120px, 14vw, 180px); }
 .gteacher__media { border-radius: 999px 999px 22px 22px; overflow: hidden; background: linear-gradient(180deg, rgb(var(--glow) / 0.18), rgb(243 237 248 / 0.04)); aspect-ratio: 4 / 5; }
@@ -162,7 +213,7 @@ body.g::before {
 .gprices__grid { display: grid; grid-template-columns: 1fr 1.15fr; gap: 22px; margin-top: 48px; }
 .gplan { border-radius: 22px; padding: 34px 34px 32px; background: var(--panel); border: 1px solid var(--line); display: flex; flex-direction: column; }
 .gplan h3 { font-weight: 500; font-size: 22px; }
-.gplan__price { font-weight: 300; font-size: 54px; line-height: 1.1; letter-spacing: -0.02em; margin-top: 10px; font-variant-numeric: tabular-nums; }
+.gplan__price { color: var(--accent); font-weight: 300; font-size: 54px; line-height: 1.1; letter-spacing: -0.02em; margin-top: 10px; font-variant-numeric: tabular-nums; }
 .gplan__for { color: var(--soft); margin-top: 8px; }
 .gplan ul { list-style: none; margin-top: 22px; display: grid; gap: 10px; }
 .gplan li { position: relative; padding-left: 22px; color: var(--ink); }
@@ -184,6 +235,7 @@ body.g::before {
 .gpromise__list > div { padding: 30px 30px 0 0; }
 .gpromise__list > div + div { padding-left: 30px; border-left: 1px solid var(--line); }
 .gpromise__list h3 { font-weight: 500; font-size: 20px; }
+.gpromise__list .gi { margin-bottom: 14px; display: block; }
 .gpromise__list p { color: var(--soft); margin-top: 8px; }
 .gpromise__honest { margin-top: 48px; font-weight: 300; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.3; max-width: 30ch; }
 
@@ -229,17 +281,17 @@ body.g::before {
 .gtry__step[hidden] { display: none; }
 .gtry__q { font-size: 24px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.3; }
 .gtry__scale { display: flex; align-items: center; gap: 20px; width: 100%; }
-.gtry__scale input { flex: 1; accent-color: #f0dcb5; height: 32px; cursor: pointer; }
+.gtry__scale input { flex: 1; accent-color: var(--accent); height: 32px; cursor: pointer; }
 .gtry__scale output { font-weight: 300; font-size: 48px; line-height: 1; min-width: 1.6ch; text-align: right; font-variant-numeric: tabular-nums; }
 .gtry__ends { display: flex; justify-content: space-between; width: 100%; font-size: 14px; color: var(--mute); margin-top: -10px; }
 .gtry__ring { justify-self: center; width: 180px; aspect-ratio: 1; display: grid; place-items: center; }
 .gtry__ring span { width: 100%; aspect-ratio: 1; border-radius: 50%; border: 1px solid rgb(243 237 248 / 0.35); background: radial-gradient(circle, rgb(var(--glow) / 0.42), rgb(var(--glow) / 0.06) 60%, transparent 72%); transform: scale(0.72); }
 .gtry.is-breathing .gtry__ring span { animation: g-breathe 10s cubic-bezier(0.45, 0, 0.55, 1) infinite; }
-.gtry__cue { justify-self: center; font-size: 22px; color: #f0dcb5; font-weight: 300; }
+.gtry__cue { justify-self: center; font-size: 22px; color: var(--accent); font-weight: 300; }
 .gtry__left { justify-self: center; color: var(--mute); font-size: 15px; font-variant-numeric: tabular-nums; margin-top: -10px; }
 .gtry__skip { justify-self: center; background: none; border: 0; color: var(--soft); text-decoration: underline; text-underline-offset: 4px; font: inherit; font-size: 15px; cursor: pointer; min-height: 44px; }
 .gtry__score { font-weight: 300; font-size: clamp(64px, 8vw, 96px); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.gtry__arrow { color: #f0dcb5; }
+.gtry__arrow { color: var(--accent); }
 .gtry__msg { font-size: 22px; max-width: 30ch; }
 .gtry__fine { font-size: 14px; color: var(--mute); }
 
@@ -247,7 +299,22 @@ body.g::before {
 .ginside { padding-block: 0 clamp(120px, 14vw, 180px); }
 .ginside__grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 40px 64px; margin-top: 48px; }
 .ginside__group:nth-child(1) { grid-row: span 2; padding: 32px; border-radius: 22px; background: var(--panel); border: 1px solid var(--line); align-self: start; }
-.ginside__group h3 { font-weight: 300; font-style: italic; color: var(--accent); font-size: 26px; letter-spacing: -0.01em; }
+.ginside__group h3 { font-weight: 300; font-style: italic; color: var(--accent); font-size: 26px; letter-spacing: -0.01em; display: flex; align-items: center; gap: 12px; }
+.ginside__group h3 .gi { font-size: 1.3em; }
+
+/* Four quick facts, one row of icons */
+.gfacts { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 36px; border-block: 1px solid var(--line); }
+.gfacts li { display: flex; align-items: center; gap: 14px; padding: 20px 18px; color: var(--soft); font-size: 16px; line-height: 1.35; }
+.gfacts li + li { border-left: 1px solid var(--line); }
+.gfacts .gi { font-size: 42px; }
+.gfacts b { color: var(--ink); font-weight: 500; }
+
+/* 21-night tracker: the format, with only tonight lit (no implied results) */
+.gtracker { margin-top: 20px; }
+.gtracker__dots { display: grid; grid-template-columns: repeat(7, 14px); gap: 9px; }
+.gtracker__dots i { width: 14px; height: 14px; border-radius: 50%; border: 1px solid rgb(255 180 138 / 0.5); }
+.gtracker__dots i.is-today { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 14px rgb(255 160 110 / 0.8); }
+.gtracker figcaption { margin-top: 10px; font-size: 14px; color: var(--mute); }
 .ginside__group:nth-child(1) h3 { font-size: 34px; }
 .ginside__group ul { list-style: none; margin-top: 12px; display: grid; gap: 8px; }
 .ginside__group li { color: var(--ink); }
@@ -257,16 +324,23 @@ body.g::before {
 /* ---------- Buy ---------- */
 .gbuy { padding-block: 0 clamp(110px, 13vw, 170px); scroll-margin-top: 90px; }
 .gbuy__card { border-radius: 26px; padding: clamp(30px, 4.5vw, 56px); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; background: radial-gradient(120% 140% at 85% 20%, rgb(var(--glow) / 0.22), transparent 60%), linear-gradient(160deg, var(--night-3), var(--night-2)); border: 1px solid rgb(var(--glow) / 0.38); box-shadow: 0 40px 90px -50px rgb(var(--glow) / 0.5); }
+.gbuy__cover { width: 112px; height: auto; border-radius: 2px 12px 12px 2px; margin-bottom: 24px; transform: rotate(-4deg); box-shadow: 0 18px 30px -14px rgb(0 0 0 / 0.7), 0 0 40px -10px rgb(255 160 110 / 0.35); }
 .gbuy__title { font-weight: 300; font-size: clamp(34px, 3.8vw, 50px); line-height: 1.08; letter-spacing: -0.02em; }
 .gbuy__left ul { list-style: none; margin-top: 22px; display: grid; gap: 10px; }
 .gbuy__left li { position: relative; padding-left: 22px; color: var(--soft); }
-.gbuy__left li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: #f0dcb5; }
+.gbuy__left li::before { content: ""; position: absolute; left: 2px; top: 0.62em; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); }
 .gbuy__right { display: grid; justify-items: start; gap: 8px; }
 .gbuy__was { color: var(--mute); text-decoration: line-through; text-decoration-thickness: 1px; }
-.gbuy__price { font-weight: 300; font-size: clamp(72px, 8vw, 104px); line-height: 1; letter-spacing: -0.04em; margin-bottom: 14px; }
+.gbuy__price { position: relative; justify-self: start; font-variant-numeric: tabular-nums; color: var(--accent); font-weight: 300; font-size: clamp(72px, 8vw, 104px); line-height: 1; letter-spacing: -0.04em; margin-bottom: 14px; }
+/* The strike that cuts through ₹1,296 before it counts down to the real price (garbh.js). */
+.gbuy__strike { position: absolute; left: -3%; right: -3%; top: 50%; height: 4px; margin-top: -2px; border-radius: 4px; background: var(--ink); box-shadow: 0 0 14px rgb(255 214 160 / 0.6); opacity: 0; transform-origin: left; pointer-events: none; }
 .gbuy__small { color: var(--mute); font-size: 15px; margin-top: 6px; }
 .gbuy__promise { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 34px; color: var(--soft); }
 .gbuy__promise b { color: var(--ink); font-weight: 600; }
+.gbuy__promise > div { display: grid; gap: 14px; align-content: start; }
+.gseven { display: flex; gap: 10px; height: 42px; align-items: center; }
+.gseven i { width: 16px; height: 16px; border-radius: 50%; border: 1px solid var(--accent); }
+.gseven i:last-child { background: var(--accent); box-shadow: 0 0 12px rgb(255 160 110 / 0.7); }
 
 /* ---------- The other two ways (small, by design) ---------- */
 .gmore { padding-block: 0 110px; border-top: 1px solid var(--line); padding-top: 60px; }
@@ -274,8 +348,9 @@ body.g::before {
 .gmore__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 26px; }
 .gmore__card { display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; padding: 24px 26px; border-radius: 18px; border: 1px solid var(--line); text-decoration: none; transition: border-color 0.25s var(--ease), background-color 0.25s var(--ease); }
 .gmore__card:hover { border-color: rgb(243 237 248 / 0.3); background: var(--panel); }
-.gmore__name { font-weight: 500; font-size: 19px; }
-.gmore__price { grid-column: 2; grid-row: 1; font-weight: 300; font-size: 22px; }
+.gmore__name { font-weight: 500; font-size: 19px; display: flex; align-items: center; gap: 10px; }
+.gmore__name .gi { font-size: 30px; }
+.gmore__price { grid-column: 2; grid-row: 1; color: var(--accent); font-weight: 300; font-size: 22px; }
 .gmore__line { grid-column: 1 / -1; color: var(--soft); font-size: 16px; }
 .gmore__go { grid-column: 1 / -1; color: var(--accent); font-size: 15px; margin-top: 4px; }
 
@@ -284,7 +359,7 @@ body.g::before {
 @media (max-width: 860px) {
   .gbar { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 25; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 18px; border-radius: 999px; background: rgb(43 31 59 / 0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid rgb(var(--glow) / 0.3); transform: translateY(140%); transition: transform 0.45s var(--ease); }
   .gbar.is-on { transform: none; }
-  .gbar__price { font-size: 20px; font-weight: 500; line-height: 1.1; }
+  .gbar__price { color: var(--accent); font-size: 20px; font-weight: 500; line-height: 1.1; }
   .gbar__price small { display: block; font-size: 12px; font-weight: 400; color: var(--mute); }
   .gbar .gbtn { min-height: 44px; padding: 10px 20px; white-space: nowrap; }
   .gfoot { padding-bottom: 110px; }
@@ -295,8 +370,8 @@ body.g::before {
   body.g { font-size: 17px; }
   .ghero { grid-template-columns: 1fr; min-height: auto; padding-block: 12px 40px; gap: 8px; }
   .ghero__media { height: 300px; order: -1; margin-bottom: 30px; }
-  .ghero__img { height: 290px; }
-  .breath__ring, .breath__glow { width: 250px; top: 4%; }
+  .gbook__body { --w: 160px; --t: 16px; --r: 15px; }
+  .breath__ring, .breath__glow { width: 270px; }
   .breath__count { bottom: -30px; font-size: 14px; }
   .ghero__title { font-size: 38px; }
   .ghero__sub { margin-top: 14px; font-size: 17px; }
@@ -308,6 +383,12 @@ body.g::before {
   .gnight__steps li::before { left: 80px; }
   .gnight__steps time { font-size: 18px; }
   .gteacher__media { max-width: 360px; }
+  .gcreds { grid-template-columns: 1fr 1fr; gap: 28px 18px; }
+  .gcreds::before { display: none; }
+  .gfacts { grid-template-columns: 1fr 1fr; }
+  .gfacts li { flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px 14px; font-size: 15px; }
+  .gfacts li:nth-child(3) { border-left: 0; }
+  .gfacts li:nth-child(n + 3) { border-top: 1px solid var(--line); }
   .gfaq > .gh2 { position: static; }
   .gjourney__line { grid-template-columns: 1fr; gap: 28px; padding-left: 28px; }
   .gjourney__line::before { left: 6px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; transform-origin: top; transform: scaleY(var(--draw, 1)); }
