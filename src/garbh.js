@@ -47,7 +47,7 @@ if (tryEl) {
     const tick = () => {
       const t = (Date.now() - start) / 1000;
       const phase = t % 10; // 4 seconds in, 6 seconds out
-      cue.textContent = phase < 4 ? 'saans andar' : 'saans bahar';
+      cue.textContent = phase < 4 ? 'breathe in' : 'breathe out';
       const remaining = Math.max(0, Math.ceil(60 - t));
       left.textContent = remaining === 1 ? '1 second' : `${remaining} seconds`;
       if (t >= 60) finish();
