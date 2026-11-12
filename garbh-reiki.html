@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Garbh Reiki Ebook | Aurina</title>
+    <meta name="description" content="The Garbh Reiki ebook: a fifteen-minute, lying-down Reiki practice for pregnancy and the trying months. Start tonight, ₹499." />
+    <meta name="theme-color" content="#1D1527" />
+    <meta property="og:title" content="Garbh Reiki Ebook | Aurina" />
+    <meta property="og:description" content="Tonight, your hands rest on your baby. A fifteen-minute Reiki practice for pregnancy. ₹499." />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script>
+      // Runs before paint: hide intro elements only when motion will actually play them in.
+      (function (d) {
+        var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+        d.classList.add('js', reduce ? 'reduced' : 'motion');
+        setTimeout(function () { d.classList.add('intro-done'); }, 3500);
+      })(document.documentElement);
+    </script>
+    <script type="module" src="/src/garbh.js"></script>
+  </head>
+  <body class="g">
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!--
+      One job: sell the ₹499 ebook. Every buy button has the same label ("Get the ebook"); the price is revealed only in the buy box.
+      The buy button itself opens WhatsApp until the NexaFunnels checkout exists (funnel.md, setup deferred).
+    -->
+    <header class="gnav" data-nav>
+      <div class="gnav__inner gwrap">
+        <a class="brand" href="./" aria-label="Aurina, home">aurina</a>
+        <nav class="gnav__links" aria-label="Garbh Reiki ebook">
+          <a href="#try">Try it</a>
+          <a href="#inside">What's inside</a>
+          <a href="#questions">Questions</a>
+        </nav>
+        <a class="gbtn gbtn--pop gnav__cta" href="#buy">Get the ebook</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="ghero gwrap" aria-labelledby="g-title">
+        <div class="ghero__copy">
+          <h1 class="ghero__title" id="g-title" data-intro>Tonight, your hands <em>rest on your baby.</em></h1>
+          <p class="ghero__sub" data-intro>Fifteen minutes of Reiki for pregnancy, lying down. <mark>Start tonight.</mark></p>
+          <div class="ghero__ctas" data-intro>
+            <a class="gbtn gbtn--pop" href="#buy" data-hero-buy>Get the ebook</a>
+            <a class="gbtn gbtn--line" href="#try">Try one minute first</a>
+          </div>
+        </div>
+        <figure class="ghero__media" data-intro-media>
+          <div class="breath" aria-hidden="true"><span class="breath__glow"></span><span class="breath__ring"></span></div>
+          <!-- The ebook cover: design/garbh-ebook-cover/ (source), exported to public/img/garbh/ebook-cover.webp. -->
+          <div class="gbook" data-book>
+            <div class="gbook__float">
+              <div class="gbook__body">
+                <span class="gbook__back" aria-hidden="true"></span>
+                <span class="gbook__pages" aria-hidden="true"><i style="--i:12"></i><i style="--i:11"></i><i style="--i:10"></i><i style="--i:9"></i><i style="--i:8"></i><i style="--i:7"></i><i style="--i:6"></i><i style="--i:5"></i><i style="--i:4"></i><i style="--i:3"></i><i style="--i:2"></i><i style="--i:1"></i></span>
+                <span class="gbook__spine" aria-hidden="true"></span>
+                <img class="gbook__cover" src="/img/garbh/ebook-cover.webp" width="1024" height="1536" alt="The Garbh Reiki ebook: a glowing line drawing of a pregnant woman cradling her baby, on dark plum silk with white chikankari vines." fetchpriority="high" />
+                <span class="gbook__shine" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+          <figcaption class="breath__count">
+            <span class="breath__in">breathe in, 1 2 3 4</span>
+            <span class="breath__out">breathe out, 1 2 3 4 5 6</span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <!-- THE FEAR -->
+      <section class="gfear" aria-label="Why this ebook exists">
+        <p class="gfear__text gwrap" data-scrub-words>Doctors look after your body. Family looks after the rituals. Nobody looks after <em>your fear.</em> This ebook is for that.</p>
+      </section>
+
+      <!-- WORRIES -->
+      <section class="gworries gwrap" aria-labelledby="g-worries">
+        <h2 class="visually-hidden" id="g-worries">The questions that keep you awake</h2>
+        <ul class="gworries__list" data-worries>
+          <li>Is my baby's heart still beating?</li>
+          <li>What if it happens again?</li>
+          <li>Am I doing enough for my baby?</li>
+        </ul>
+        <p class="gworries__answer" data-worries-answer>Fifteen minutes. <em>Your hands.</em> Tonight.</p>
+      </section>
+
+      <!-- TRY IT: she feels it before she pays -->
+      <section class="gtry gwrap" id="try" aria-labelledby="g-try" data-try>
+        <div class="gtry__head">
+          <h2 class="gh2" id="g-try" data-split>Try one minute, <em>right now.</em></h2>
+          <p class="glead">Lie back. This is the ebook's first exercise.</p>
+        </div>
+
+        <div class="gtry__panel">
+          <div class="gtry__step" data-step="1">
+            <label class="gtry__q" for="calm-before">How calm do you feel right now?</label>
+            <div class="gtry__scale">
+              <input type="range" id="calm-before" min="1" max="10" value="4" data-before />
+              <output for="calm-before" data-before-out>4</output>
+            </div>
+            <p class="gtry__ends"><span>1, very anxious</span><span>10, completely calm</span></p>
+            <button class="gbtn gbtn--pop" type="button" data-start>Start the minute</button>
+          </div>
+
+          <div class="gtry__step" data-step="2" hidden>
+            <p class="gtry__q">Hands on your belly. Breathe with the ring.</p>
+            <div class="gtry__ring" aria-hidden="true"><span></span></div>
+            <p class="gtry__cue" aria-live="polite" data-cue>breathe in</p>
+            <p class="gtry__left" data-left>60 seconds</p>
+            <button class="gtry__skip" type="button" data-skip>I'm done</button>
+          </div>
+
+          <div class="gtry__step" data-step="3" hidden>
+            <label class="gtry__q" for="calm-after">And now?</label>
+            <div class="gtry__scale">
+              <input type="range" id="calm-after" min="1" max="10" value="4" data-after />
+              <output for="calm-after" data-after-out>4</output>
+            </div>
+            <p class="gtry__ends"><span>1, very anxious</span><span>10, completely calm</span></p>
+            <button class="gbtn gbtn--pop" type="button" data-show>See my Calm Score</button>
+          </div>
+
+          <div class="gtry__step" data-step="4" hidden>
+            <p class="gtry__score" aria-live="polite"><span data-from>4</span> <span class="gtry__arrow">→</span> <span data-to>5</span></p>
+            <p class="gtry__msg" data-msg>That was one minute. The ebook gives you fifteen, every night.</p>
+            <a class="gbtn gbtn--pop" href="#buy">Get the ebook</a>
+            <p class="gtry__fine">Some nights take longer. That's normal.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT'S INSIDE -->
+      <section class="ginside gwrap" id="inside" aria-labelledby="g-inside">
+        <h2 class="gh2" id="g-inside" data-split>What's <em>inside</em></h2>
+        <ul class="gfacts" data-facts>
+          <li><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path stroke-linejoin="round" d="M12 8V12L14.5 14.5"/></g></svg><span><b>15 minutes</b> a night</span></li>
+          <li><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M19 20V18.5M5 20V18.5"/><path d="M5 18H19C19.9319 18 20.3978 18 20.7654 17.8478C21.2554 17.6448 21.6448 17.2554 21.8478 16.7654C22 16.3978 22 15.9319 22 15C22 14.0681 22 13.6022 21.8478 13.2346C21.6448 12.7446 21.2554 12.3552 20.7654 12.1522C20.3978 12 19.9319 12 19 12H5C4.06812 12 3.60218 12 3.23463 12.1522C2.74458 12.3552 2.35523 12.7446 2.15224 13.2346C2 13.6022 2 14.0681 2 15C2 15.9319 2 16.3978 2.15224 16.7654C2.35523 17.2554 2.74458 17.6448 3.23463 17.8478C3.60218 18 4.06812 18 5 18Z"/><path d="M21 12C21 8.22876 21 6.34315 19.8284 5.17157C18.6569 4 16.7712 4 13 4H11C7.22876 4 5.34315 4 4.17157 5.17157C3 6.34315 3 8.22876 3 12"/><path d="M18.5 12V10.5C18.5 8.61438 18.5 7.67157 17.9142 7.08579C17.3284 6.5 16.3856 6.5 14.5 6.5H9.5C7.61438 6.5 6.67157 6.5 6.08579 7.08579C5.5 7.67157 5.5 8.61438 5.5 10.5V12"/><path d="M12 7V12"/></g></svg><span><b>Lying down</b>, no poses</span></li>
+          <li><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="M19.1414 5.00003C20.9097 6.80378 22 9.27458 22 12C22 14.7578 20.8836 17.2549 19.0782 19.064M5 19.1415C3.14864 17.3265 2 14.7974 2 12C2 9.235 3.12222 6.73208 4.93603 4.92188"/><path stroke-linejoin="round" d="M16.2849 8.04397C17.3458 9.05877 18 10.4488 18 11.9822C18 13.5338 17.3302 14.9386 16.2469 15.9564M7.8 16C6.68918 14.9789 6 13.556 6 11.9822C6 10.4266 6.67333 9.01843 7.76162 8"/><circle cx="12" cy="12" r="2"/></g></svg><span><b>Plain English</b>, no jargon</span></li>
+          <li><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M9 14.2354V17.0001C9 19.7615 11.2386 22.0001 14 22.0001H14.8824C16.7691 22.0001 18.3595 20.7311 18.8465 19.0001"/><path d="M5.42857 3H5.3369C5.02404 3 4.86761 3 4.73574 3.01166C3.28763 3.13972 2.13972 4.28763 2.01166 5.73574C2 5.86761 2 6.02404 2 6.3369V7.23529C2 11.1013 5.13401 14.2353 9 14.2353C12.7082 14.2353 15.7143 11.2292 15.7143 7.521V6.3369C15.7143 6.02404 15.7143 5.86761 15.7026 5.73574C15.5746 4.28763 14.4267 3.13972 12.9785 3.01166C12.8467 3 12.6902 3 12.3774 3H12.2857"/><circle cx="19" cy="16" r="3"/><path d="M12 2V4"/><path d="M6 2V4"/></g></svg><span><b>Alongside</b> your doctor</span></li>
+        </ul>
+        <!-- The ebook in the order she'll use it: four chapters, each with when it helps. -->
+        <ol class="gchaps" data-chaps>
+          <li class="gchap gchap--start">
+            <span class="gchap__num">01</span>
+            <span class="gchap__emoji" aria-hidden="true">🌙</span>
+            <h3 class="gchap__title">Tonight</h3>
+            <p class="gchap__when">Start here</p>
+            <ul class="gchap__list"><li>Page 1: your first Calm Score</li><li>The 15-minute routine, hands on your belly</li></ul>
+          </li>
+          <li class="gchap">
+            <span class="gchap__num">02</span>
+            <span class="gchap__emoji" aria-hidden="true">🕯️</span>
+            <h3 class="gchap__title">For the hard nights</h3>
+            <p class="gchap__when">When worry wins</p>
+            <ul class="gchap__list"><li>For the 2 AM panic</li><li>For scan weeks</li><li>What to do with the "what ifs"</li></ul>
+          </li>
+          <li class="gchap">
+            <span class="gchap__num">03</span>
+            <span class="gchap__emoji" aria-hidden="true">👪</span>
+            <h3 class="gchap__title">For your family</h3>
+            <p class="gchap__when">When people ask</p>
+            <ul class="gchap__list"><li>When someone asks "any good news?"</li><li>A one-page note for your doctor</li></ul>
+          </li>
+          <li class="gchap">
+            <span class="gchap__num">04</span>
+            <span class="gchap__emoji" aria-hidden="true">🌱</span>
+            <h3 class="gchap__title">To keep going</h3>
+            <p class="gchap__when">Every night, for 21 nights</p>
+            <ul class="gchap__list"><li>Hand positions for each trimester</li><li>A 21-day plan and Calm Score tracker</li></ul>
+            <figure class="gtracker" data-tracker>
+              <div class="gtracker__dots" aria-hidden="true"><i class="is-today"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+              <figcaption>Tonight is night one.</figcaption>
+            </figure>
+          </li>
+        </ol>
+        <p class="ginside__value">Worth ₹1,296 as separate guides. <em>Yours for far less.</em></p>
+      </section>
+
+      <!-- WHO WROTE IT -->
+      <section class="gteacher gwrap" aria-labelledby="g-teacher">
+        <figure class="gteacher__media">
+          <img src="/img/garbh/face.webp" width="537" height="1200" loading="lazy" alt="Sanghamitra as an animated character, smiling, with curly hair and glasses." />
+        </figure>
+        <div class="gteacher__copy">
+          <h2 class="gh2" id="g-teacher" data-split>Written by <em>Sanghamitra</em></h2>
+          <ol class="gcreds" data-creds aria-label="Sanghamitra's background">
+            <li><span class="gcreds__ico"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M3.0916 10.3634L9.78281 13.5004C11.2038 14.1665 12.7963 14.1665 14.2173 13.5004L20.9084 10.3634C22.3639 9.68105 22.3639 7.31899 20.9084 6.63664L14.2172 3.49965C12.7962 2.83345 11.2037 2.83345 9.78272 3.49965L3.0916 6.63659C1.63614 7.31895 1.63613 9.68101 3.0916 10.3634Z"/><path d="M2 8.5V14"/><path d="M19 11.5V16.6254C19 17.6334 18.4965 18.5772 17.6147 19.0656C16.1463 19.8787 13.796 21 12 21C10.204 21 7.8537 19.8787 6.38533 19.0656C5.5035 18.5772 5 17.6334 5 16.6254V11.5"/></g></svg></span><b>Psychology</b><span>graduate</span></li>
+            <li><span class="gcreds__ico"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><circle cx="12" cy="16" r="3"/><path d="M12 19.2599L9.73713 21.4294C9.41306 21.74 9.25102 21.8954 9.1138 21.9491C8.80111 22.0716 8.45425 21.9668 8.28977 21.7001C8.21758 21.5831 8.19509 21.3719 8.1501 20.9497C8.1247 20.7113 8.112 20.5921 8.07345 20.4923C7.98715 20.2688 7.80579 20.0949 7.57266 20.0122C7.46853 19.9752 7.3442 19.963 7.09554 19.9387L7.09553 19.9387C6.65512 19.8956 6.43491 19.874 6.31283 19.8048C6.03463 19.6471 5.92529 19.3146 6.05306 19.0148C6.10913 18.8832 6.27116 18.7279 6.59523 18.4172L6.59523 18.4172L8.07345 17L9.00086 16.0725"/><path d="M12 19.2599L14.2629 21.4293C14.5869 21.74 14.749 21.8954 14.8862 21.9491C15.1989 22.0716 15.5457 21.9668 15.7102 21.7001C15.7824 21.583 15.8049 21.3719 15.8499 20.9497C15.8753 20.7113 15.888 20.5921 15.9265 20.4922C16.0129 20.2687 16.1942 20.0949 16.4273 20.0121C16.5315 19.9752 16.6558 19.963 16.9045 19.9387C17.3449 19.8955 17.5651 19.874 17.6872 19.8048C17.9654 19.6471 18.0747 19.3145 17.9469 19.0147C17.8909 18.8832 17.7288 18.7278 17.4048 18.4172L15.9265 17L15 16.0734"/><path d="M17.3197 17.9957C19.2921 17.9748 20.3915 17.8512 21.1213 17.1213C22 16.2426 22 14.8284 22 12V8C22 5.17157 22 3.75736 21.1213 2.87868C20.2426 2 18.8284 2 16 2H8C5.17157 2 3.75736 2 2.87868 2.87868C2 3.75736 2 5.17157 2 8V12C2 14.8284 2 16.2426 2.87868 17.1213C3.64706 17.8897 4.82497 17.9862 7 17.9983"/><path d="M9 6L15 6"/><path d="M7 9.5H17"/></g></svg></span><b>Reiki teacher</b><span>certified since 2019</span></li>
+            <li><span class="gcreds__ico"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M10.4028 7.68841L10.2119 7.73161C9.47396 7.89857 9.10501 7.98205 9.01723 8.26432C8.92945 8.54659 9.18097 8.84072 9.68403 9.42898L9.81418 9.58117C9.95713 9.74833 10.0286 9.83191 10.0608 9.93531C10.0929 10.0387 10.0821 10.1502 10.0605 10.3733L10.0408 10.5763C9.96476 11.3612 9.92674 11.7536 10.1565 11.9281C10.3864 12.1025 10.7318 11.9435 11.4227 11.6254L11.6014 11.5431C11.7978 11.4527 11.8959 11.4075 12 11.4075C12.1041 11.4075 12.2022 11.4527 12.3986 11.5431L12.5773 11.6254C13.2682 11.9435 13.6136 12.1025 13.8435 11.9281C14.0733 11.7536 14.0352 11.3612 13.9592 10.5763L13.9395 10.3733C13.9179 10.1502 13.9071 10.0387 13.9392 9.93531C13.9714 9.83191 14.0429 9.74833 14.1858 9.58117L14.316 9.42898C14.819 8.84072 15.0706 8.54659 14.9828 8.26432C14.895 7.98205 14.526 7.89857 13.7881 7.73161L13.5972 7.68841C13.3875 7.64097 13.2827 7.61725 13.1985 7.55334C13.1143 7.48944 13.0603 7.39258 12.9524 7.19887L12.8541 7.02251C12.4741 6.34084 12.2841 6 12 6C11.7159 6 11.5259 6.34084 11.1459 7.02251L11.0476 7.19887C10.9397 7.39258 10.8857 7.48944 10.8015 7.55334C10.7173 7.61725 10.6125 7.64097 10.4028 7.68841Z"/><path d="M19 9C19 12.866 15.866 16 12 16C8.13401 16 5 12.866 5 9C5 5.13401 8.13401 2 12 2C15.866 2 19 5.13401 19 9Z"/><path d="M7.35111 15L6.71424 17.323C6.0859 19.6148 5.77173 20.7607 6.19097 21.3881C6.3379 21.6079 6.535 21.7844 6.76372 21.9008C7.41635 22.2331 8.42401 21.7081 10.4393 20.658C11.1099 20.3086 11.4452 20.1339 11.8014 20.0959C11.9335 20.0818 12.0665 20.0818 12.1986 20.0959C12.5548 20.1339 12.8901 20.3086 13.5607 20.658C15.576 21.7081 16.5837 22.2331 17.2363 21.9008C17.465 21.7844 17.6621 21.6079 17.809 21.3881C18.2283 20.7607 17.9141 19.6148 17.2858 17.323L16.6489 15"/></g></svg></span><b>Grand Master</b><span>Usui Shiki Ryoho lineage</span></li>
+            <li><span class="gcreds__ico"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8.96173 18.9108C6.01943 16.5913 2 14 2 9.13704C2 4.2741 7.50016 0.825403 12 5.50057C16.4998 0.825403 22 4.2741 22 9.13704C22 14 17.9806 16.5913 15.0383 18.9108C14 19.7293 13 20.4999 12 20.4999C11 20.4999 10 19.7293 8.96173 18.9108Z"/></svg></span><b>A mother</b></li>
+          </ol>
+          <p>She wrote it the way she teaches: simple, calm, and easy to do on your own.</p>
+          <dl class="gteacher__never">
+            <dt>The honest part</dt>
+            <dd>The ebook teaches the practice. Attunement and a certificate need a teacher: that's her 1:1 course. What you pay for the ebook counts towards it for 30 days.</dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- BUY -->
+      <section class="gbuy gwrap" id="buy" aria-labelledby="g-buy" data-buy>
+        <div class="gbuy__card">
+          <div class="gbuy__left">
+            <h2 class="gbuy__title" id="g-buy">The Garbh Reiki Ebook</h2>
+            <ul>
+              <li>The fifteen-minute lying-down practice</li>
+              <li>Help for the hard nights and scan weeks</li>
+              <li>Hand positions for each trimester</li>
+              <li>Your 21-day Calm Score tracker</li>
+            </ul>
+          </div>
+          <div class="gbuy__book">
+            <img class="gbuy__cover" src="/img/garbh/ebook-cover.webp" width="1024" height="1536" alt="" loading="lazy" />
+          </div>
+          <div class="gbuy__right">
+            <p class="gbuy__was">Worth ₹1,296</p>
+            <p class="gbuy__price" data-price><span data-count aria-hidden="true">₹499</span><span class="visually-hidden">₹499</span><span class="gbuy__strike" aria-hidden="true"></span></p>
+            <a class="gbtn gbtn--pop gbtn--big" href="https://wa.me/%VITE_WHATSAPP%?text=Hi%20Aurina%2C%20I%20would%20like%20the%20Garbh%20Reiki%20ebook%20(%E2%82%B9499)." target="_blank" rel="noopener">Get the ebook</a>
+            <p class="gbuy__small">Yours to keep. Begin tonight.</p>
+          </div>
+        </div>
+        <div class="gbuy__promise">
+          <div><span class="gseven" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><p><b>The 7-night promise.</b> Practise for 7 nights and log your Calm Score. Not calmer? Every rupee back.</p></div>
+          <div><svg class="gi gi--lg" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M9 14.2354V17.0001C9 19.7615 11.2386 22.0001 14 22.0001H14.8824C16.7691 22.0001 18.3595 20.7311 18.8465 19.0001"/><path d="M5.42857 3H5.3369C5.02404 3 4.86761 3 4.73574 3.01166C3.28763 3.13972 2.13972 4.28763 2.01166 5.73574C2 5.86761 2 6.02404 2 6.3369V7.23529C2 11.1013 5.13401 14.2353 9 14.2353C12.7082 14.2353 15.7143 11.2292 15.7143 7.521V6.3369C15.7143 6.02404 15.7143 5.86761 15.7026 5.73574C15.5746 4.28763 14.4267 3.13972 12.9785 3.01166C12.8467 3 12.6902 3 12.3774 3H12.2857"/><circle cx="19" cy="16" r="3"/><path d="M12 2V4"/><path d="M6 2V4"/></g></svg><p><b>Always alongside your doctor.</b> Pain, bleeding, or your baby moving less: call your doctor or hospital first, today.</p></div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="gfaq gwrap" id="questions" aria-labelledby="g-faq">
+        <h2 class="gh2" id="g-faq" data-split>Before you <em>buy</em></h2>
+        <div class="gfaq__list">
+          <details><summary>Is Reiki safe in pregnancy?</summary><p>It's gentle touch and breathing, lying down. Her lineage teaches it at any stage. Some teachers wait until 12 weeks, so tell your gynaecologist first.</p></details>
+          <details><summary>Will this help me conceive, or keep my baby healthy?</summary><p>No. Nobody honest can promise that. This is for your calm and your bond with your baby, alongside your doctor.</p></details>
+          <details><summary>Can the ebook make me Reiki Level 1?</summary><p>It teaches everything Level 1 covers. Becoming Level 1 needs an attunement from a teacher, in her 1:1 course.</p></details>
+          <details><summary>I've been told to rest. Can I still do it?</summary><p>Yes. Everything is done lying down.</p></details>
+          <details><summary>I'm still trying to conceive. Is it for me?</summary><p>Yes. Start now, and the practice is yours when your baby comes.</p></details>
+          <details><summary>What language is it in?</summary><p>English, in simple, everyday words.</p></details>
+          <details><summary>How do I get it?</summary><p>Tap "Get the ebook". Pay by UPI or card. It comes on WhatsApp.</p></details>
+        </div>
+      </section>
+
+      <!-- THE OTHER TWO WAYS: deliberately small, leading to their own page -->
+      <section class="gmore gwrap" aria-labelledby="g-more">
+        <h2 class="gmore__title" id="g-more">Want her to teach you herself?</h2>
+        <div class="gmore__grid">
+          <a class="gmore__card" href="./garbh-reiki-personal.html#plans">
+            <span class="gmore__name"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path d="M14 2C14 2 16.2 2.2 19 5C21.8 7.8 22 10 22 10"/><path d="M14.207 5.53564C14.207 5.53564 15.197 5.81849 16.6819 7.30341C18.1668 8.78834 18.4497 9.77829 18.4497 9.77829"/><path d="M10.0376 5.31617C9.15317 3.73144 6.93076 3.54428 5.53781 4.93723C4.7008 5.77423 4.04952 6.7996 4.00655 7.93309C3.93421 9.84122 4.41713 13.0817 7.6677 16.3323C10.9183 19.5829 14.1588 20.0658 16.0669 19.9934C17.2004 19.9505 18.2258 19.2992 19.0628 18.4622C20.4557 17.0692 20.2686 14.8468 18.6838 13.9624L17.5209 13.3134C16.4714 12.7277 15.0947 12.9628 14.1722 13.8853C14.1722 13.8853 13.0532 15.0042 11.0245 12.9755C8.99578 10.9467 10.1147 9.8278 10.1147 9.8278C11.0372 8.90533 11.2723 7.52858 10.6866 6.4791L10.0376 5.31617Z"/></g></svg>Garbh Reiki 1:1 Course</span>
+            <span class="gmore__line">Live attunement, a certificate, and her support.</span>
+            <span class="gmore__price">₹2,999</span>
+            <span class="gmore__go">See what's included →</span>
+          </a>
+          <a class="gmore__card" href="./garbh-reiki-personal.html#plans">
+            <span class="gmore__name"><svg class="gi" viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.4018 19.8538L14.3584 19.8221C12.814 18.691 11 17.3625 11 15.0595C11 12.5172 14.0251 10.7142 16.5 13.1584C18.1619 11.5171 20.0718 11.7909 21.1474 12.9177C21.6735 13.4689 22 14.2243 22 15.0595C22 17.6018 19.7893 18.9566 18.171 20.1692C17.6 20.5971 17.05 21 16.5 21C15.95 21 15.4 20.5971 14.829 20.1692C14.6903 20.0653 14.5474 19.9604 14.4018 19.8538ZM21.1474 12.9177C21.6771 11.8105 22 10.5602 22 9.11901C22 4.03436 16.4998 0.428415 12 5.31675C7.50016 0.428415 2 4.03436 2 9.11901C2 14.2037 6.01943 16.9132 8.96173 19.3384C10 20.1942 11 21 12 21C12.7942 21 13.5884 20.4917 14.4018 19.8538"/></svg>Nine Months Together</span>
+            <span class="gmore__line">Her support until six weeks after birth.</span>
+            <span class="gmore__price">₹14,999</span>
+            <span class="gmore__go">See what's included →</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="gfoot gwrap">
+      <p class="brand">aurina</p>
+      <p>Garbh Reiki is a self-care practice for calm and connection. It is not medical treatment and never replaces your doctor's care.</p>
+      <p><a href="mailto:%VITE_EMAIL%">%VITE_EMAIL%</a> · %VITE_CITY%</p>
+    </footer>
+
+    <!-- Mobile: the purchase is always one tap away (hidden while the hero or buy box is on screen). -->
+    <div class="gbar" data-bar aria-hidden="true">
+      <span class="gbar__price">Garbh Reiki <small>Begin tonight</small></span>
+      <a class="gbtn gbtn--pop" href="#buy" tabindex="-1">Get the ebook</a>
+    </div>
+  </body>
+</html>

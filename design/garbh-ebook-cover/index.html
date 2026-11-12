@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garbh Reiki Ebook Cover</title>
+<!--
+  Source of the Garbh Reiki ebook cover ("Chikankari Night", chosen 2026-11-11).
+  Drawn on a canvas so it can be re-exported at any size. Not part of the site build.
+
+  Export: open this page (?scale=2 for 2048 x 3072) and screenshot the canvas, or run
+    msedge --headless=new --screenshot=cover.png --window-size=1024,1536 --virtual-time-budget=8000 <url>
+  then convert to public/img/garbh/ebook-cover.webp.
+
+  lineart.png: the founder-supplied illustration, extracted to white lines on transparent.
+  LAUNCH GATE: confirm its commercial licence and swap in the full-size original before launch.
+-->
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=zodiak@300,301&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#000}canvas{display:block}</style>
+</head>
+<body>
+<canvas id="cover"></canvas>
+<script type="module">
+const S = Number(new URLSearchParams(location.search).get('scale')) || 1;
+const W = 1024, H = 1536, TAU = Math.PI * 2;
+const canvas = document.getElementById('cover'); canvas.width = W * S; canvas.height = H * S;
+canvas.style.width = `${W * S}px`; canvas.style.height = `${H * S}px`;
+const ctx = canvas.getContext('2d'); ctx.scale(S, S);
+
+const ART = new Image(); ART.src = './lineart.png'; await ART.decode();
+await Promise.all(['300 140px Zodiak', 'italic 300 48px Zodiak', '500 24px "Hanken Grotesk"'].map((f) => document.fonts.load(f)));
+const AW = ART.width, AH = ART.height, BELLY = [.73, .745]; // belly centre as a fraction of the illustration
+
+// The illustration in warm cream to apricot light.
+const art = (() => {
+  const c = document.createElement('canvas'); c.width = AW; c.height = AH; const x = c.getContext('2d');
+  x.drawImage(ART, 0, 0); x.globalCompositeOperation = 'source-in';
+  const g = x.createLinearGradient(0, 0, AW * .6, AH); g.addColorStop(0, '#fff1e4'); g.addColorStop(.55, '#ffd2b2'); g.addColorStop(1, '#ffb88f');
+  x.fillStyle = g; x.fillRect(0, 0, AW, AH); return c;
+})();
+const cream = (a) => `rgba(246,228,212,${a})`;
+const THREAD = 'rgba(244,232,222,.55)';
+function rnd(seed) { let s = seed; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+function gold(y) {
+  const g = ctx.createLinearGradient(110, y - 70, 914, y + 70);
+  ['#a7825a', '#e8caa2', '#c39c70', '#f1d8b6', '#9b7550'].forEach((c, i) => g.addColorStop(i / 4, c));
+  return g;
+}
+
+// Charcoal-plum silk: grain, a fine twill and a soft vignette.
+ctx.fillStyle = '#1b1620'; ctx.fillRect(0, 0, W, H);
+const r = rnd(17);
+for (let i = 0; i < 14000; i++) { ctx.fillStyle = r() > .5 ? `rgba(255,255,255,${.02 * (.6 + r())})` : `rgba(40,20,30,${.05 * (.6 + r())})`; ctx.fillRect(r() * W, r() * H, 2, 2); }
+ctx.strokeStyle = 'rgba(255,255,255,.022)'; ctx.lineWidth = 1;
+for (let i = -H; i < W; i += 7) { ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + H, H); ctx.stroke(); }
+const v = ctx.createRadialGradient(512, 820, 260, 512, 820, 1100);
+v.addColorStop(0, 'rgba(255,200,170,.05)'); v.addColorStop(.6, 'rgba(0,0,0,0)'); v.addColorStop(1, 'rgba(0,0,0,.5)');
+ctx.fillStyle = v; ctx.fillRect(0, 0, W, H);
+
+// Chikankari: white-thread vines with five-dot flowers.
+function flower(x, y, k = 1) {
+  ctx.fillStyle = THREAD;
+  for (let i = 0; i < 5; i++) { const a = i / 5 * TAU - Math.PI / 2; ctx.beginPath(); ctx.arc(x + Math.cos(a) * 7 * k, y + Math.sin(a) * 7 * k, 3.1 * k, 0, TAU); ctx.fill(); }
+  ctx.beginPath(); ctx.arc(x, y, 1.6 * k, 0, TAU); ctx.fill();
+}
+function vine(x, y0, y1) {
+  ctx.strokeStyle = THREAD; ctx.lineWidth = 1.2; ctx.beginPath();
+  for (let y = y0; y <= y1; y += 4) { const xx = x + Math.sin((y - y0) / 60) * 14; y === y0 ? ctx.moveTo(xx, y) : ctx.lineTo(xx, y); }
+  ctx.stroke();
+  for (let y = y0 + 40, i = 0; y < y1 - 20; y += 110, i++) {
+    flower(x + Math.sin((y - y0) / 60) * 14, y);
+    const ly = y + 52, lx = x + Math.sin((ly - y0) / 60) * 14, side = i % 2 ? 1 : -1;
+    ctx.save(); ctx.translate(lx + side * 9, ly); ctx.rotate(side * .7); ctx.beginPath(); ctx.ellipse(0, 0, 3.5, 10, 0, 0, TAU); ctx.stroke(); ctx.restore();
+  }
+}
+vine(66, 80, 1456); vine(958, 80, 1456);
+
+// The halo: a fine ring with chikan flowers, then the glowing illustration.
+const h = 900, w = h * AW / AH, x = W / 2 - w / 2 - 10, y = 460, bx = x + BELLY[0] * w, by = y + BELLY[1] * h;
+ctx.strokeStyle = 'rgba(244,232,222,.3)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(bx, by, 250, 0, TAU); ctx.stroke();
+for (let i = 0; i < 16; i++) { const a = i / 16 * TAU; flower(bx + Math.cos(a) * 268, by + Math.sin(a) * 268, .75); }
+const R = h * .24, warm = ctx.createRadialGradient(bx, by, 4, bx, by, R);
+warm.addColorStop(0, 'rgba(255,165,115,.26)'); warm.addColorStop(.5, 'rgba(255,160,110,.08)'); warm.addColorStop(1, 'rgba(255,160,110,0)');
+ctx.fillStyle = warm; ctx.fillRect(bx - R, by - R, R * 2, R * 2);
+ctx.save();
+ctx.shadowColor = 'rgba(255,160,110,.75)'; ctx.shadowBlur = 18 * S; ctx.drawImage(art, x, y, w, h);
+ctx.shadowColor = 'rgba(255,200,160,.5)'; ctx.shadowBlur = 5 * S; ctx.drawImage(art, x, y, w, h);
+ctx.restore();
+
+// Type: matte gold title, cream small lines.
+ctx.textAlign = 'center';
+ctx.font = '500 22px "Hanken Grotesk"'; ctx.letterSpacing = '8px'; ctx.fillStyle = cream(.62); ctx.fillText('A REIKI PRACTICE FOR PREGNANCY', W / 2 + 4, 150);
+ctx.letterSpacing = '0px'; ctx.font = '300 140px Zodiak'; ctx.fillStyle = gold(300); ctx.fillText('Garbh Reiki', W / 2, 300);
+ctx.font = 'italic 300 48px Zodiak'; ctx.fillStyle = cream(.8); ctx.fillText('with your own hands', W / 2, 372);
+ctx.font = '500 24px "Hanken Grotesk"'; ctx.letterSpacing = '7px'; ctx.fillStyle = cream(.72); ctx.fillText('SANGHAMITRA NATH', W / 2 + 4, 1450);
+document.title = 'cover ready';
+</script>
+</body>
+</html>

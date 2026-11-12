@@ -11,8 +11,8 @@ export default defineConfig(({ mode }) => {
     base: mode === 'production' ? '/aurina/' : '/',
     build: {
       target: 'es2020',
-      // two static pages: the landing page and the Reiki, Personally details page
-      rollupOptions: { input: { main: 'index.html', details: 'reiki-personally.html' } },
+      // static pages: the landing page, the Reiki, Personally details page, the Garbh Reiki ebook page and its 1:1 page
+      rollupOptions: { input: { main: 'index.html', details: 'reiki-personally.html', garbh: 'garbh-reiki.html', garbhPersonal: 'garbh-reiki-personal.html' } },
     },
   };
 });
