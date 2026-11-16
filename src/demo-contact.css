@@ -1,0 +1,31 @@
+/* Demo note: a small plum toast, readable on both the light and the night pages. */
+.demo-note {
+  position: fixed;
+  left: 50%;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  z-index: 100;
+  margin: 0;
+  max-width: calc(100vw - 32px);
+  padding: 12px 20px;
+  border-radius: 999px;
+  background: #2b1f3b;
+  color: #f6f0e8;
+  font-family: "Hanken Grotesk Variable", "Hanken Grotesk", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  text-align: center;
+  box-shadow: 0 10px 30px -10px rgb(20 12 30 / 0.5);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.demo-note.is-on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo-note { transition: opacity 0.2s linear; transform: translate(-50%, 0); }
+}
