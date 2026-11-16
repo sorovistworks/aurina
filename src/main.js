@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { SplitText } from 'gsap/SplitText';
 import Lenis from 'lenis';
+import './demo-contact.js';
 import { initHealer } from './healer.js';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
